@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modmod:ruby_crystal"
+  },
+  "result": "modmod:refined_ruby_crystal",
+  "count": 1
+}

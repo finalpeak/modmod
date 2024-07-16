@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "modmod:block/ruby_crystal_block"
+  }
+}
