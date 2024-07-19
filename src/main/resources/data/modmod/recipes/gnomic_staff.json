@@ -7,13 +7,13 @@
   ],
   "key": {
     "#": {
-      "item": "modmod:ruby_crystal_block"
+      "item": "modmod:gnomite_block"
     },
     "&": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "modmod:ruby_crystal_block"
+    "item": "modmod:gnomic_staff"
   }
 }

@@ -24,7 +24,7 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.GNOME)));
             
     public static final Item GNOMIC_STAFF = registerItem("gnomic_staff",
-            new GnomicStaffItem(new FabricItemSettings().group(ModItemGroup.RUBY)));
+            new GnomicStaffItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(ModMod.MOD_ID, name), item);
