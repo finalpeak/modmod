@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "modmod:ruby_crystal_block",
-    "modmod:ruby_ore"
+    "modmod:ruby_ore",
+    "modmod:gnomite_block",
+    "modmod:gnomite_ore"
   ]
 }

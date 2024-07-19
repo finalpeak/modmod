@@ -16,6 +16,12 @@ public class ModItems {
     public static final Item REFINED_RUBY_CRYSTAL = registerItem("refined_ruby_crystal",
             new Item(new FabricItemSettings().group(ModItemGroup.RUBY)));
 
+    public static final Item GNOMITE = registerItem("gnomite", 
+            new Item(new FabricItemSettings().group(ModItemGroup.GNOME)));
+
+    public static final Item REFINED_GNOMITE =  registerItem("refined_gnomite", 
+            new Item(new FabricItemSettings().group(ModItemGroup.GNOME)));
+
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(ModMod.MOD_ID, name), item);
     }

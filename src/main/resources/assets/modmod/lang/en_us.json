@@ -10,5 +10,20 @@
 
 
 
-  "itemGroup.modmod.ruby": "Ruby"
+  "itemGroup.modmod.ruby": "Ruby",
+
+
+
+
+  "item.modmod.gnomite": "Gnomite",
+  "item.modmod.refined_gnomite": "Refined Gnomite",
+
+
+  "block.modmod.gnomite_block": "Gnomite Block",
+  "block.modmod.gnomite_ore": "Gnomite Ore",
+
+
+
+
+  "itemGroup.modmod.gnome": "Gnome"
 }

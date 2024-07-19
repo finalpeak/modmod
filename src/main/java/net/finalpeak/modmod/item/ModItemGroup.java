@@ -9,4 +9,7 @@ import net.minecraft.util.Identifier;
 public class ModItemGroup {
     public static final ItemGroup RUBY = FabricItemGroupBuilder.build(new Identifier(ModMod.MOD_ID, "ruby"),
             () -> new ItemStack(ModItems.REFINED_RUBY_CRYSTAL));
+
+    public static final ItemGroup GNOME = FabricItemGroupBuilder.build(new Identifier(ModMod.MOD_ID, "gnome"),
+            () -> new ItemStack(ModItems.GNOMITE));
 }

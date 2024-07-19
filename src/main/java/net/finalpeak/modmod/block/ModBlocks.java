@@ -20,6 +20,12 @@ public class ModBlocks {
     public static final Block RUBY_ORE = registerBlock("ruby_ore",
             new Block(FabricBlockSettings.of(Material.STONE).strength(3f).requiresTool()), ModItemGroup.RUBY);
 
+    public static final Block GNOMITE_BLOCK = registerBlock("gnomite_block", 
+            new Block(FabricBlockSettings.of(Material.METAL).strength(6f).requiresTool()), ModItemGroup.GNOME);
+
+    public static final Block GNOMITE_ORE = registerBlock("gnomite_ore",
+            new Block(FabricBlockSettings.of(Material.STONE).strength(3f).requiresTool()), ModItemGroup.GNOME);
+
 
     private static Block registerBlock(String name, Block block, ItemGroup group){
         registerBlockItem(name, block, group);
