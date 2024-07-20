@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.finalpeak.modmod.ModMod;
 import net.finalpeak.modmod.item.custom.GnomicStaffItem;
+import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -25,6 +26,9 @@ public class ModItems {
             
     public static final Item GNOMIC_STAFF = registerItem("gnomic_staff",
             new GnomicStaffItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
+
+    public static final Item GNOMIC_TOME = registerItem("gnomic_tome",
+            new GnomicTomeItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(ModMod.MOD_ID, name), item);

@@ -2,6 +2,7 @@ package net.finalpeak.modmod;
 
 import net.fabricmc.api.ModInitializer;
 import net.finalpeak.modmod.block.ModBlocks;
+import net.finalpeak.modmod.events.EventHandlers;
 import net.finalpeak.modmod.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class ModMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
+		EventHandlers.registerEvents();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 
