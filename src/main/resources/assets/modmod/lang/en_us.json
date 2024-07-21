@@ -15,6 +15,14 @@
   "item.modmod.gnomic_staff.tooltip.shift": "Right Click on an entity to launch",
   "item.modmod.gnomic_staff.tooltip": "Press §eSHIFT§r for more Information",
 
+  "item.modmod.gnomic_tome": "Gnomic Tome",
+  "item.modmod.gnomic_tome.tooltip.shift": "Use left and right click to cast spells!",
+  "item.modmod.gnomic_tome.tooltip.spell1": "[R - R - R] <spell1>",
+  "item.modmod.gnomic_tome.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.modmod.gnomic_tome.tooltip.spell3": "[R - R - L] <spell3>",
+  "item.modmod.gnomic_tome.tooltip.spell4": "[R - L - L] <spell4>",
+  "item.modmod.gnomic_tome.tooltip": "Press §eSHIFT§r for more Information",
+
   "item.modmod.gnomite": "Gnomite",
   "item.modmod.refined_gnomite": "Refined Gnomite",
 
