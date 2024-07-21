@@ -4,22 +4,14 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -39,6 +31,19 @@ public class GnomicTomeItem extends Item {
     }
 
     private List<String> inputs = new ArrayList<>();
+    public void addInput(String input) {
+        inputs.add(input);
+    }
+    public List<String> getInputs() {
+        return inputs;
+    }
+    public void sendInputs(PlayerEntity user){
+        String msg = inputs.get(0);
+        for (int i = 1; i < inputs.size(); i++) {
+            msg += " - " + inputs.get(i);
+        }
+        user.sendMessage(new LiteralText(msg), true);
+    }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
@@ -61,23 +66,23 @@ public class GnomicTomeItem extends Item {
                 inputs.clear();
             }
             inputs.add("R");
-            String msg = inputs.get(0);
-            for (int i = 1; i < inputs.size(); i++) {
-                msg += " - " + inputs.get(i);
-            }
-            user.sendMessage(new LiteralText(msg), true);
+            sendInputs(user);
 
             //Spells
             if (inputs.size() == 3) {
-                if (inputs.equals(new ArrayList<>(Arrays.asList("R", "R", "R")))) {
-                    if(spell1(world, user)){
-                        removeMagic(1);
-                    }
-                }
+                spells(world, user);
             }
         }
 
         return super.use(world, user, hand);
+    }
+
+    public void spells(World world, PlayerEntity player){
+        if (inputs.equals(new ArrayList<>(Arrays.asList("R", "R", "R")))) {
+            if(spell1(world, player)){
+                removeMagic(1);
+            }
+        }
     }
 
     public boolean spell1(World world, PlayerEntity player) {
