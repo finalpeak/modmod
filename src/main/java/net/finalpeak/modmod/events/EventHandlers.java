@@ -3,10 +3,12 @@ package net.finalpeak.modmod.events;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.finalpeak.modmod.client.TomeOverlay;
 
 public class EventHandlers {
     private static boolean wasLeftClicking = false; // Track if the left click was pressed last tick
@@ -15,7 +17,6 @@ public class EventHandlers {
     // Register client tick event to handle item interactions and changes
     public static void registerEvents() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            // Ensure we have access to the player and world
             if (client.player != null && client.world != null) {
                 handleLeftClick(client.player, client.world); // Handle left-click interactions
 
@@ -25,12 +26,22 @@ public class EventHandlers {
                 // Check if the held item has changed
                 if (!currentStack.equals(previousStack)) {
                     // If the previous item is a GnomicTomeItem, clear its inputs
-                    if (previousStack.getItem() instanceof GnomicTomeItem) {
-                        GnomicTomeItem tomeItem = (GnomicTomeItem) previousStack.getItem();
+                    if (previousStack.getItem() instanceof GnomicTomeItem tomeItem) {
                         tomeItem.clearInputs(); // Clear inputs for the previous item
                     }
                     // Update the previousStack to the new item
                     previousStack = currentStack;
+                }
+            }
+        });
+
+        // Register HUD render callback
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (client.player != null) {
+                ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
+                if (heldItem.getItem() instanceof GnomicTomeItem) {
+                    MatrixStack matrices = new MatrixStack();
+                    TomeOverlay.render(matrices);
                 }
             }
         });
@@ -48,8 +59,7 @@ public class EventHandlers {
                 ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
 
                 // Check if the item is an instance of GnomicTomeItem
-                if (stack.getItem() instanceof GnomicTomeItem) {
-                    GnomicTomeItem tomeItem = (GnomicTomeItem) stack.getItem();
+                if (stack.getItem() instanceof GnomicTomeItem tomeItem) {
 
                     // Add input and send inputs to player if there are less than 3 inputs
                     if (!tomeItem.getInputs().isEmpty() && tomeItem.getInputs().size() < 3) {

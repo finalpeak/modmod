@@ -1,10 +1,13 @@
 package net.finalpeak.modmod.item.custom;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.finalpeak.modmod.utils.Raycaster;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,8 +26,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import net.minecraft.util.Identifier;
+
 
 public class GnomicTomeItem extends Item {
+    private static final Identifier HUD_TEXTURE = new Identifier("modid", "textures/gui/tome_0.png");
 
     // List to store inputs for the tome
     private List<String> inputs = new ArrayList<>();
