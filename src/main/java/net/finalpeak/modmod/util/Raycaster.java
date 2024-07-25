@@ -1,6 +1,5 @@
-package net.finalpeak.modmod.utils;
+package net.finalpeak.modmod.util;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -13,7 +12,6 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.RaycastContext.ShapeType;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Raycaster {
 
@@ -34,7 +32,7 @@ public class Raycaster {
             if (entityHitResult != null) {
                 // If entity is hit first, return the block the entity occupies
                 Entity entity = entityHitResult.getEntity();
-                return getBlockOccupiedByEntity(world, entity);
+                return getBlockOccupiedByEntity(entity);
             } else {
                 // Return the block hit by raycast
                 return blockPos;
@@ -54,12 +52,12 @@ public class Raycaster {
 
         // Find the closest entity to the start point
         return entities.stream()
-                .map(entity -> new EntityHitResult(entity))
+                .map(EntityHitResult::new)
                 .min((result1, result2) -> Double.compare(start.squaredDistanceTo(result1.getEntity().getPos()), start.squaredDistanceTo(result2.getEntity().getPos())))
                 .orElse(null);
     }
 
-    private static BlockPos getBlockOccupiedByEntity(World world, Entity entity) {
+    private static BlockPos getBlockOccupiedByEntity(Entity entity) {
         // Get the center of the entity's bounding box
         Vec3d center = entity.getBoundingBox().getCenter();
 

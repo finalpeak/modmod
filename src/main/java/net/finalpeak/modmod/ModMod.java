@@ -2,6 +2,7 @@ package net.finalpeak.modmod;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.finalpeak.modmod.block.ModBlocks;
 import net.finalpeak.modmod.client.TomeOverlay;
 import net.finalpeak.modmod.events.EventHandlers;
@@ -32,14 +33,8 @@ public class ModMod implements ModInitializer {
 		EventHandlers.registerEvents();
 
 		// Register the HUD render callback
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.player != null) {
-				ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
-				if (heldItem.getItem() instanceof GnomicTomeItem) {
-					MatrixStack matrices = new MatrixStack();
-					TomeOverlay.render(matrices);
-				}
-			}
+		HudRenderCallback.EVENT.register((matrices, tickDelta) -> {
+			TomeOverlay.render(matrices);
 		});
 
 		// Log mod initialization

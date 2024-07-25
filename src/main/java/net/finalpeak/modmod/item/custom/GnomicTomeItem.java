@@ -1,13 +1,8 @@
 package net.finalpeak.modmod.item.custom;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.finalpeak.modmod.utils.Raycaster;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
+import net.finalpeak.modmod.util.Raycaster;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,12 +21,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.minecraft.util.Identifier;
+
 
 
 public class GnomicTomeItem extends Item {
-    private static final Identifier HUD_TEXTURE = new Identifier("modid", "textures/gui/tome_0.png");
-
     // List to store inputs for the tome
     private List<String> inputs = new ArrayList<>();
 
@@ -128,15 +121,14 @@ public class GnomicTomeItem extends Item {
     public boolean spell1(World world, PlayerEntity player) {
         BlockPos blockPos = Raycaster.getBlockOrEntity(world, player);
 
-        BlockState blockState = world.getBlockState(blockPos);
-        //if (!blockState.isOf(Blocks.AIR)) {
-            LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);
-            if (lightning != null) {
-                lightning.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
-                world.spawnEntity(lightning);
-                return true;
-            }
-        //}
+        LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);
+        if (lightning != null) {
+            assert blockPos != null;
+            lightning.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
+            world.spawnEntity(lightning);
+            return true;
+        }
+
         return false;
     }
 
