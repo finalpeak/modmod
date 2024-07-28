@@ -3,12 +3,16 @@ package net.finalpeak.modmod.item.custom;
 import net.finalpeak.modmod.util.Raycaster;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -23,13 +27,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.sql.Array;
 import java.util.*;
-
 import net.minecraft.client.MinecraftClient;
-
-
 
 public class GnomicTomeItem extends Item {
     // List to store inputs for the tome
@@ -96,7 +95,7 @@ public class GnomicTomeItem extends Item {
     public void input(String input, World world, @NotNull PlayerEntity user) {
         SoundEvent sound;
         if(spelling){
-            user.playSound(SoundEvents.ENTITY_BLAZE_HURT, 1.0f, 1.0f);
+            playSound(world, user, SoundEvents.ENTITY_BLAZE_HURT);
 
         }else {
 
@@ -107,9 +106,9 @@ public class GnomicTomeItem extends Item {
 
             // Play sounds
             if (input.equals("R")) {
-                user.playSound(SoundEvents.BLOCK_NOTE_BLOCK_HARP, 1.0f, 1.0f);
+                playSound(world, user, SoundEvents.BLOCK_NOTE_BLOCK_HARP);
             } else {
-                user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 5.0f, 1.0f);
+                playSound(world, user, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP);
             }
 
             // Add input and send to player
@@ -119,7 +118,6 @@ public class GnomicTomeItem extends Item {
             // If inputs size is 3, trigger spells
             if (inputs.size() == 3) {
                 spells(world, user);
-                user.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
             }
 
             /*Timer timer = new Timer();
@@ -227,5 +225,26 @@ public class GnomicTomeItem extends Item {
     // Placeholder for removing magic, to be implemented
     public void removeMagic(int value) {
         // Implement magic storage/usage logic
+    }
+
+    public void playSound(World world, @NotNull PlayerEntity user, SoundEvent sound){
+        if (!world.isClient) { // Server-side
+            // Send a packet to the player to play the sound
+            ((ServerPlayerEntity) user).networkHandler.sendPacket(new PlaySoundS2CPacket(
+                    sound,
+                    SoundCategory.PLAYERS,
+                    user.getX(),
+                    user.getY(),
+                    user.getZ(),
+                    1.0f,
+                    1.0f
+            ));
+        } else { // Client-side
+            // Directly play the sound for the player
+            MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(
+                    sound,
+                    1.0f
+            ));
+        }
     }
 }

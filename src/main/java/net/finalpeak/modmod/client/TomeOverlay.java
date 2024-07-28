@@ -31,12 +31,14 @@ public class TomeOverlay extends DrawableHelper {
                 // Draw the overlay
                 drawTexture(matrices, x, y, 0, 0, 256, 256, 256, 256);
 
+                float sizeCof = 1.75f;
+
                 // Slot 1
                 if (!tomeItem.getInputs().isEmpty()) {
                     checkLR(tomeItem, 0);
 
-                    x = (client.getWindow().getScaledWidth() - 256) / 2 - 35;
-                    y = (client.getWindow().getScaledHeight() - 256) / 2 - 20;
+                    x = (int)((client.getWindow().getScaledWidth() - 256) / 2 - 35 * sizeCof);
+                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 - 20 * sizeCof);
                     drawTexture(matrices, x, y, 0, 0, 256, 256, 256, 256);
                 }
 
@@ -44,8 +46,8 @@ public class TomeOverlay extends DrawableHelper {
                 if (tomeItem.getInputs().size() >= 2) {
                     checkLR(tomeItem, 1);
 
-                    x = (client.getWindow().getScaledWidth() - 256) / 2 + 35; // Adjusted to prevent overlap
-                    y = (client.getWindow().getScaledHeight() - 256) / 2 - 20;
+                    x = (int)((client.getWindow().getScaledWidth() - 256) / 2 + 35 * sizeCof); // Adjusted to prevent overlap
+                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 - 20 * sizeCof);
                     drawTexture(matrices, x, y, 0, 0, 256, 256, 256, 256);
                 }
 
@@ -54,7 +56,7 @@ public class TomeOverlay extends DrawableHelper {
                     checkLR(tomeItem, 2);
 
                     x = (client.getWindow().getScaledWidth() - 256) / 2;
-                    y = (client.getWindow().getScaledHeight() - 256) / 2 + 40; // Adjusted to prevent overlap
+                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 + 40 * sizeCof); // Adjusted to prevent overlap
                     drawTexture(matrices, x, y, 0, 0, 256, 256, 256, 256);
                 }
             }
