@@ -11,12 +11,18 @@
 
   "itemGroup.modmod.gnome": "Gnome",
 
-  "item.modmod.gnomic_staff": "Gnomic Staff",
-  "item.modmod.gnomic_staff.tooltip.shift": "Right Click on an entity to launch",
-  "item.modmod.gnomic_staff.tooltip": "Press §eSHIFT§r for more Information",
+  "item.modmod.earthen_staff": "Earthen Staff",
+  "item.modmod.earthen_staff.tooltip.shift": "Use left and right click to cast spells",
+  "item.modmod.earthen_staff.tooltip.spell1": "[R - R - R] Earthquake",
+  "item.modmod.earthen_staff.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.modmod.earthen_staff.tooltip.spell3": "[L - L - L] <spell3>",
+  "item.modmod.earthen_staff.tooltip.spell4": "[L - R - L] <spell4>",
+  "item.modmod.earthen_staff.tooltip1": "How the peaceful gnomes manage to harness the earth.",
+  "item.modmod.earthen_staff.tooltip2": "Press §eSHIFT§r for more Information",
+
 
   "item.modmod.gnomic_tome": "Gnomic Tome",
-  "item.modmod.gnomic_tome.tooltip.shift": "Use left and right click to cast spells!",
+  "item.modmod.gnomic_tome.tooltip.shift": "Use left and right click to cast spells",
   "item.modmod.gnomic_tome.tooltip.spell1": "[R - R - R] <spell1>",
   "item.modmod.gnomic_tome.tooltip.spell2": "[R - L - R] <spell2>",
   "item.modmod.gnomic_tome.tooltip.spell3": "[L - L - L] <spell3>",

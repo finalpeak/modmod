@@ -13,11 +13,11 @@ import net.minecraft.world.RaycastContext.ShapeType;
 
 import java.util.List;
 
-public class Raycaster {
+public class Detection {
 
-    public static BlockPos getBlockOrEntity(World world, PlayerEntity player) {
+    public static BlockPos raycastGetBlock(World world, PlayerEntity player, int range) {
         Vec3d start = player.getCameraPosVec(1.0F);
-        Vec3d end = start.add(player.getRotationVec(1.0F).multiply(30)); // Adjust the range as needed
+        Vec3d end = start.add(player.getRotationVec(1.0F).multiply(range)); // Adjust the range as needed
 
         RaycastContext context = new RaycastContext(start, end, ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player);
 
@@ -36,6 +36,33 @@ public class Raycaster {
             } else {
                 // Return the block hit by raycast
                 return blockPos;
+            }
+        }
+
+        // Return null if nothing is hit
+        return null;
+    }
+
+    public static Entity raycastGetEntity(World world, PlayerEntity player, int range) {
+        Vec3d start = player.getCameraPosVec(1.0F);
+        Vec3d end = start.add(player.getRotationVec(1.0F).multiply(range)); // Adjust the range as needed
+
+        RaycastContext context = new RaycastContext(start, end, ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player);
+
+        // Perform block raycasting
+        BlockHitResult blockHitResult = world.raycast(context);
+
+        if (blockHitResult.getType() != BlockHitResult.Type.MISS) {
+            BlockPos blockPos = blockHitResult.getBlockPos();
+
+            // Perform entity raycasting
+            EntityHitResult entityHitResult = getEntityHitResult(world, start, end, player);
+            if (entityHitResult != null) {
+                // If entity is hit first, return the block the entity occupies
+                return entityHitResult.getEntity();
+            } else {
+                // Return the block hit by raycast
+                return null;
             }
         }
 
@@ -64,4 +91,20 @@ public class Raycaster {
         // Convert the Vec3d to BlockPos
         return new BlockPos(center.x, center.y, center.z);
     }
+
+    public static List<Entity> nearbyEntities(Entity entity, int radius){
+        Box box = new Box(
+                entity.getX() - radius, entity.getY() - radius, entity.getZ() - radius,
+                entity.getX() + radius, entity.getY() + radius, entity.getZ() + radius
+        );
+
+        // Get all entities within the bounding box
+        List<Entity> entities = entity.world.getOtherEntities(entity, box);
+        entities.add(entity);
+
+        return entities;
+    }
+
+
+
 }

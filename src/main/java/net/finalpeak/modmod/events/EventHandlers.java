@@ -1,10 +1,13 @@
 package net.finalpeak.modmod.events;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.finalpeak.modmod.client.StaffOverlay;
+import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -33,6 +36,10 @@ public class EventHandlers {
                         tomeItem.clearInputs(); // Clear inputs for the previous item
                         tomeItem.resetSpelling();
                     }
+                    if (previousStack.getItem() instanceof EarthenStaffItem staffItem) {
+                        staffItem.clearInputs(); // Clear inputs for the previous item
+                        staffItem.resetSpelling();
+                    }
                     // Update the previousStack to the new item
                     previousStack = currentStack;
                 }
@@ -43,9 +50,13 @@ public class EventHandlers {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {
                 ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
-                if (heldItem.getItem() instanceof GnomicTomeItem tomeItem) {
+                if (heldItem.getItem() instanceof GnomicTomeItem) {
                     MatrixStack matrices = new MatrixStack();
-                    TomeOverlay.render(matrices);
+                    new TomeOverlay().render(matrices);
+                }
+                if (heldItem.getItem() instanceof EarthenStaffItem) {
+                    MatrixStack matrices = new MatrixStack();
+                    new StaffOverlay().render(matrices);
                 }
             }
         });
@@ -63,9 +74,18 @@ public class EventHandlers {
                 ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
 
                 // Check if the item is an instance of GnomicTomeItem
-                if (stack.getItem() instanceof GnomicTomeItem tomeItem && !halter) {
-                    tomeItem.input("L", world, player);
+                if (!halter) {
+                    Item item = stack.getItem();
+
+                    if (item instanceof GnomicTomeItem magicItem) {
+                        magicItem.input("L", world, player);
+                    } else if (item instanceof EarthenStaffItem magicItem) {
+                        magicItem.input("L", world, player);
+                    }
+
                     halter = true;
+
+                    // Use Timer to reset `halter` after a short delay
                     Timer timer = new Timer();
                     timer.schedule(new TimerTask() {
                         @Override
@@ -73,7 +93,6 @@ public class EventHandlers {
                             halter = false;
                         }
                     }, 50);
-                    // Add input
                 }
 
                 // Mark that the left click was pressed this tick

@@ -1,12 +1,10 @@
 package net.finalpeak.modmod.item;
 
-import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.finalpeak.modmod.ModMod;
-import net.finalpeak.modmod.item.custom.GnomicStaffItem;
+import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -24,8 +22,8 @@ public class ModItems {
     public static final Item REFINED_GNOMITE =  registerItem("refined_gnomite", 
             new Item(new FabricItemSettings().group(ModItemGroup.GNOME)));
             
-    public static final Item GNOMIC_STAFF = registerItem("gnomic_staff",
-            new GnomicStaffItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
+    public static final Item GNOMIC_STAFF = registerItem("earthen_staff",
+            new EarthenStaffItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
 
     public static final Item GNOMIC_TOME = registerItem("gnomic_tome",
             new GnomicTomeItem(new FabricItemSettings().group(ModItemGroup.GNOME).maxDamage(16)));
