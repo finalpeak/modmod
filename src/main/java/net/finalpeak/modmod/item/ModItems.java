@@ -6,6 +6,7 @@ import net.finalpeak.modmod.block.ModBlocks;
 import net.finalpeak.modmod.item.custom.AzureShardItem;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;

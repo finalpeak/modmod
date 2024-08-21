@@ -27,6 +27,13 @@ public class ModItemGroups {
 
                         entries.add(ModItems.MYSTIC_MUSHROOM_ITEM);
 
+                        entries.add(ModBlocks.PANDO_LOG);
+                        entries.add(ModBlocks.PANDO_WOOD);
+                        entries.add(ModBlocks.STRIPPED_PANDO_LOG);
+                        entries.add(ModBlocks.STRIPPED_PANDO_WOOD);
+                        entries.add(ModBlocks.PANDO_PLANKS);
+                        entries.add(ModBlocks.PANDO_LEAVES);
+
                     }).build());
 
 

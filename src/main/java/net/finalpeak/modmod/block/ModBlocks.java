@@ -6,6 +6,8 @@ import net.finalpeak.modmod.ModMod;
 import net.finalpeak.modmod.block.custom.MysticMushroomBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -23,6 +25,26 @@ public class ModBlocks {
 
     public static final Block MYSTIC_MUSHROOM_BLOCK = registerBlock("mystic_mushroom_block",
             new MysticMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).nonOpaque()));
+
+
+    public static final Block PANDO_LOG = registerBlock("pando_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+
+    public static final Block PANDO_WOOD = registerBlock("pando_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+
+    public static final Block STRIPPED_PANDO_LOG = registerBlock("stripped_pando_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+
+    public static final Block STRIPPED_PANDO_WOOD = registerBlock("stripped_pando_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+
+    public static final Block PANDO_PLANKS = registerBlock("pando_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+
+    public static final Block PANDO_LEAVES = registerBlock("pando_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
+
 
 
 

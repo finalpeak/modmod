@@ -36,5 +36,13 @@
   "block.modmod.gnomite_ore": "Gnomite Ore",
 
   "item.modmod.mystic_mushroom_item": "Mystic Mushroom",
-  "block.modmod.mystic_mushroom_block": "Mystic Mushroom"
+  "block.modmod.mystic_mushroom_block": "Mystic Mushroom",
+
+  "block.modmod.pando_log": "Pando Log",
+  "block.modmod.pando_wood": "Pando Wood",
+  "block.modmod.stripped_pando_log": "Stripped Pando Log",
+  "block.modmod.stripped_pando_wood": "Stripped Pando Wood",
+  "block.modmod.pando_planks": "Pando Planks",
+  "block.modmod.pando_leaves": "Pando Leaves"
+
 }
