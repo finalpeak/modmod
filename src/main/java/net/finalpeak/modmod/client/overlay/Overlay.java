@@ -1,4 +1,4 @@
-package net.finalpeak.modmod.client;
+package net.finalpeak.modmod.client.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.finalpeak.modmod.item.custom.MagicTool;
@@ -50,7 +50,7 @@ public class Overlay {
                     x = (int)((client.getWindow().getScaledWidth() - 256) / 2 + 35 * sizeCof);
                     y = (int)((client.getWindow().getScaledHeight() - 256) / 2 - 20 * sizeCof);
                     context.drawTexture(
-                            checkLR(item, 0, context),
+                            checkLR(item, 1, context),
                             x, y, 0, 0, 256, 256, 256, 256);
                 }
 
@@ -60,7 +60,7 @@ public class Overlay {
                     x = (client.getWindow().getScaledWidth() - 256) / 2;
                     y = (int)((client.getWindow().getScaledHeight() - 256) / 2 + 40 * sizeCof);
                     context.drawTexture(
-                            checkLR(item, 0, context),
+                            checkLR(item, 2, context),
                             x, y, 0, 0, 256, 256, 256, 256);
                 }
             }

@@ -11,9 +11,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
-    public static final ItemGroup GNOMIC_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(ModMod.MOD_ID, "ruby"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.ruby"))
+    public static final ItemGroup GNOME_GROUP = Registry.register(Registries.ITEM_GROUP,
+            new Identifier(ModMod.MOD_ID, "gnome_group"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.gnome_group"))
                     .icon(() -> new ItemStack(ModItems.REFINED_GNOMITE)).entries((displayContext, entries) -> {
 
                         entries.add(ModItems.GNOMITE);
@@ -23,6 +23,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.GNOMIC_STAFF);
                         entries.add(ModItems.GNOMIC_TOME);
+                        entries.add(ModItems.AZURE_SHARD);
 
                         entries.add(ModItems.MYSTIC_MUSHROOM_ITEM);
 

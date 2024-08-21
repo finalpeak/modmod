@@ -1,19 +1,5 @@
 {
-  "itemGroup.modmod.ruby": "Ruby",
-
-  "item.modmod.ruby_crystal": "Ruby Crystal",
-  "item.modmod.refined_ruby_crystal": "Refined Ruby Crystal",
-
-  "block.modmod.ruby_crystal_block": "Ruby Crystal Block",
-  "block.modmod.ruby_ore": "Ruby Ore",
-
-  "item.modmod.mystic_mushroom_item": "Mystic Mushroom",
-  "block.modmod.mystic_mushroom_block": "Mystic Mushroom",
-
-
-
-
-  "itemGroup.modmod.gnome": "Gnome",
+  "itemGroup.modmod.gnome_group": "Gnome",
 
   "item.modmod.earthen_staff": "Earthen Staff",
   "item.modmod.earthen_staff.tooltip.shift": "Use left and right click to cast spells",
@@ -27,15 +13,28 @@
 
   "item.modmod.gnomic_tome": "Gnomic Tome",
   "item.modmod.gnomic_tome.tooltip.shift": "Use left and right click to cast spells",
-  "item.modmod.gnomic_tome.tooltip.spell1": "[R - R - R] <spell1>",
+  "item.modmod.gnomic_tome.tooltip.spell1": "[R - R - R] Lightning",
   "item.modmod.gnomic_tome.tooltip.spell2": "[R - L - R] <spell2>",
   "item.modmod.gnomic_tome.tooltip.spell3": "[L - L - L] <spell3>",
   "item.modmod.gnomic_tome.tooltip.spell4": "[L - R - L] <spell4>",
-  "item.modmod.gnomic_tome.tooltip": "Press §eSHIFT§r for more Information",
+  "item.modmod.gnomic_tome.tooltip1": "The energy of nature courses through this relic.",
+  "item.modmod.gnomic_tome.tooltip2": "Press §eSHIFT§r for more Information",
+
+  "item.modmod.azure_shard": "Azure Shard",
+  "item.modmod.azure_shard.tooltip.shift": "Use left and right click to cast spells",
+  "item.modmod.azure_shard.tooltip.spell1": "[R - R - R] Lightning",
+  "item.modmod.azure_shard.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.modmod.azure_shard.tooltip.spell3": "[L - L - L] <spell3>",
+  "item.modmod.azure_shard.tooltip.spell4": "[L - R - L] <spell4>",
+  "item.modmod.azure_shard.tooltip1": "A piece of the sky mysteriously returned to the earth.",
+  "item.modmod.azure_shard.tooltip2": "Press §eSHIFT§r for more Information",
 
   "item.modmod.gnomite": "Gnomite",
   "item.modmod.refined_gnomite": "Refined Gnomite",
 
   "block.modmod.gnomite_block": "Gnomite Block",
-  "block.modmod.gnomite_ore": "Gnomite Ore"
+  "block.modmod.gnomite_ore": "Gnomite Ore",
+
+  "item.modmod.mystic_mushroom_item": "Mystic Mushroom",
+  "block.modmod.mystic_mushroom_block": "Mystic Mushroom"
 }

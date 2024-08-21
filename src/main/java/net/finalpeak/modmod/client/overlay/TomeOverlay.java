@@ -1,7 +1,6 @@
-package net.finalpeak.modmod.client;
+package net.finalpeak.modmod.client.overlay;
 
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 public class TomeOverlay extends Overlay {

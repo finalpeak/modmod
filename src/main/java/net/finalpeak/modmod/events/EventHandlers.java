@@ -1,19 +1,20 @@
 package net.finalpeak.modmod.events;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.finalpeak.modmod.client.StaffOverlay;
+import net.finalpeak.modmod.client.overlay.ShardOverlay;
+import net.finalpeak.modmod.client.overlay.StaffOverlay;
+import net.finalpeak.modmod.item.custom.AzureShardItem;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.finalpeak.modmod.client.TomeOverlay;
+import net.finalpeak.modmod.client.overlay.TomeOverlay;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -42,6 +43,10 @@ public class EventHandlers {
                         staffItem.clearInputs(); // Clear inputs for the previous item
                         staffItem.resetSpelling();
                     }
+                    if (previousStack.getItem() instanceof EarthenStaffItem shardItem) {
+                        shardItem.clearInputs(); // Clear inputs for the previous item
+                        shardItem.resetSpelling();
+                    }
                     // Update the previousStack to the new item
                     previousStack = currentStack;
                 }
@@ -61,6 +66,10 @@ public class EventHandlers {
                 if (heldItem.getItem() instanceof EarthenStaffItem) {
                     DrawContext context = new DrawContext(client, vertexConsumers);
                     new StaffOverlay().render(context);
+                }
+                if (heldItem.getItem() instanceof AzureShardItem) {
+                    DrawContext context = new DrawContext(client, vertexConsumers);
+                    new ShardOverlay().render(context);
                 }
 
                 vertexConsumers.draw(); // Ensure all vertices are drawn
@@ -86,6 +95,8 @@ public class EventHandlers {
                     if (item instanceof GnomicTomeItem magicItem) {
                         magicItem.input("L", world, player);
                     } else if (item instanceof EarthenStaffItem magicItem) {
+                        magicItem.input("L", world, player);
+                    } else if (item instanceof AzureShardItem magicItem) {
                         magicItem.input("L", world, player);
                     }
 

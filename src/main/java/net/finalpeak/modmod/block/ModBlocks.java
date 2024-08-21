@@ -3,6 +3,7 @@ package net.finalpeak.modmod.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.finalpeak.modmod.ModMod;
+import net.finalpeak.modmod.block.custom.MysticMushroomBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -21,7 +22,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).strength(3f).requiresTool()));
 
     public static final Block MYSTIC_MUSHROOM_BLOCK = registerBlock("mystic_mushroom_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).nonOpaque()));
+            new MysticMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).nonOpaque()));
 
 
 

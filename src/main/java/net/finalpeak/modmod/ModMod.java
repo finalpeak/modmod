@@ -1,13 +1,15 @@
 package net.finalpeak.modmod;
 
+import net.finalpeak.modmod.client.overlay.ShardOverlay;
 import net.finalpeak.modmod.item.ModItemGroups;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.finalpeak.modmod.block.ModBlocks;
-import net.finalpeak.modmod.client.StaffOverlay;
-import net.finalpeak.modmod.client.TomeOverlay;
+import net.finalpeak.modmod.client.overlay.StaffOverlay;
+import net.finalpeak.modmod.client.overlay.TomeOverlay;
 import net.finalpeak.modmod.events.EventHandlers;
 import net.finalpeak.modmod.item.ModItems;
+import net.finalpeak.modmod.item.custom.AzureShardItem;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.client.MinecraftClient;
@@ -47,6 +49,9 @@ public class ModMod implements ModInitializer {
 				}
 				if (heldItem.getItem() instanceof EarthenStaffItem) {
 					new StaffOverlay().render(matrices);
+				}
+				if (heldItem.getItem() instanceof AzureShardItem) {
+					new ShardOverlay().render(matrices);
 				}
 			}
 		});

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "modmod:item/earthen_staff"
+    "layer0": "modmod:item/azure_shard"
   }
 }

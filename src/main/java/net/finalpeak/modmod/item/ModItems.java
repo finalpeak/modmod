@@ -3,6 +3,7 @@ package net.finalpeak.modmod.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.finalpeak.modmod.ModMod;
 import net.finalpeak.modmod.block.ModBlocks;
+import net.finalpeak.modmod.item.custom.AzureShardItem;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.item.BlockItem;
@@ -24,6 +25,9 @@ public class ModItems {
 
     public static final Item GNOMIC_TOME = registerItem("gnomic_tome",
             new GnomicTomeItem(new FabricItemSettings().maxDamage(16)));
+
+    public static final Item AZURE_SHARD = registerItem("azure_shard",
+            new AzureShardItem(new FabricItemSettings().maxDamage(16)));
 
     public static final Item MYSTIC_MUSHROOM_ITEM = registerItem("mystic_mushroom_item",
             new BlockItem(ModBlocks.MYSTIC_MUSHROOM_BLOCK, new FabricItemSettings().food(ModFoodComponents.MYSTIC_MUSHROOM)));

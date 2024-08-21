@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.finalpeak.modmod.ModMod"
+    ],
+    "client": [
+      "net.finalpeak.modmod.ModModClient"
     ]
   },
   "mixins": [

@@ -1,7 +1,6 @@
 package net.finalpeak.modmod.item.custom;
 
 import net.finalpeak.modmod.util.Spells;
-
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,11 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.*;
 
-public class GnomicTomeItem extends MagicTool {
+public class AzureShardItem extends MagicTool {
 
-    public GnomicTomeItem(Settings settings){
+    public AzureShardItem(Settings settings){
         super(settings);
     }
 
@@ -21,18 +21,17 @@ public class GnomicTomeItem extends MagicTool {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.shift"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell1"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell2"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell3"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell4"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip.shift"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip.spell1"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip.spell2"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip.spell3"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip.spell4"));
         } else {
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip1"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip2"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip1"));
+            tooltip.add(Text.translatable("item.modmod.azure_shard.tooltip2"));
         }
     }
 
-    // Check and cast spells based on inputs
     public void spells(World world, PlayerEntity player) {
         spelling = true;
         Timer timer = new Timer();
@@ -46,7 +45,7 @@ public class GnomicTomeItem extends MagicTool {
         }
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("R", "L", "R")))) {
-            if (Spells.launch(world, player, 0.5, 1)) {
+            if (Spells.spell2(world, player)) {
                 removeMagic(1);
             }
         }
