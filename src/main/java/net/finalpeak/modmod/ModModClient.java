@@ -14,5 +14,7 @@ public class ModModClient implements ClientModInitializer {
     public void onInitializeClient() {
         // Set the render layer for your block to cutout or translucent
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MYSTIC_MUSHROOM_BLOCK, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PANDO_LEAVES, RenderLayer.getCutout());
     }
 }
