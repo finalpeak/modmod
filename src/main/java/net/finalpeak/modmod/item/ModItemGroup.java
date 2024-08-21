@@ -1,8 +1,7 @@
-package net.kaupenjoe.tutorialmod.item;
+package net.finalpeak.modmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.finalpeak.modmod.ModMod;
-import net.finalpeak.modmod.item.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -10,7 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ModItemGroups {
+public class ModItemGroup {
     public static final ItemGroup RUBY_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(ModMod.MOD_ID, "ruby"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.ruby"))
