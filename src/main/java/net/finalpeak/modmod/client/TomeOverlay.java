@@ -1,5 +1,6 @@
 package net.finalpeak.modmod.client;
 
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
@@ -16,7 +17,7 @@ public class TomeOverlay extends Overlay {
 
     // You can override the render method if additional logic is needed
     @Override
-    public void render(MatrixStack matrices) {
-        super.render(matrices); // Call the superclass render method
+    public void render(DrawContext context) {
+        super.render(context); // Call the superclass render method
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
@@ -18,6 +19,10 @@ public class ModBlocks {
 
     public static final Block GNOMITE_ORE = registerBlock("gnomite_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).strength(3f).requiresTool()));
+
+    public static final Block MYSTIC_MUSHROOM_BLOCK = registerBlock("mystic_mushroom_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).nonOpaque()));
+
 
 
     private static Block registerBlock(String name, Block block){

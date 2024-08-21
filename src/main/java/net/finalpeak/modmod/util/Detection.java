@@ -89,7 +89,7 @@ public class Detection {
         Vec3d center = entity.getBoundingBox().getCenter();
 
         // Convert the Vec3d to BlockPos
-        return new BlockPos(center.x, center.y, center.z);
+        return new BlockPos((int) center.x, (int) center.y, (int) center.z);
     }
 
     public static List<Entity> nearbyEntities(Entity entity, int radius){
@@ -99,7 +99,7 @@ public class Detection {
         );
 
         // Get all entities within the bounding box
-        List<Entity> entities = entity.world.getOtherEntities(entity, box);
+        List<Entity> entities = entity.getWorld().getOtherEntities(entity, box);
         entities.add(entity);
 
         return entities;

@@ -5,6 +5,8 @@ import net.finalpeak.modmod.client.StaffOverlay;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -50,14 +52,18 @@ public class EventHandlers {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {
                 ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
+                VertexConsumerProvider.Immediate vertexConsumers = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
                 if (heldItem.getItem() instanceof GnomicTomeItem) {
-                    MatrixStack matrices = new MatrixStack();
-                    new TomeOverlay().render(matrices);
+                    DrawContext context = new DrawContext(client, vertexConsumers);
+                    new TomeOverlay().render(context);
                 }
                 if (heldItem.getItem() instanceof EarthenStaffItem) {
-                    MatrixStack matrices = new MatrixStack();
-                    new StaffOverlay().render(matrices);
+                    DrawContext context = new DrawContext(client, vertexConsumers);
+                    new StaffOverlay().render(context);
                 }
+
+                vertexConsumers.draw(); // Ensure all vertices are drawn
             }
         });
     }

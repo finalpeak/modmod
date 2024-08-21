@@ -7,7 +7,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import java.util.*;
@@ -22,13 +21,13 @@ public class GnomicTomeItem extends MagicTool {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (Screen.hasShiftDown()) {
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip.shift"));
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip.spell1"));
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip.spell2"));
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip.spell3"));
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip.spell4"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.shift"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell1"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell2"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell3"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell4"));
         } else {
-            tooltip.add(new TranslatableText("item.modmod.gnomic_tome.tooltip"));
+            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip"));
         }
     }
 

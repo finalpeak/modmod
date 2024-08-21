@@ -1,5 +1,6 @@
 package net.finalpeak.modmod;
 
+import net.finalpeak.modmod.item.ModItemGroups;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.finalpeak.modmod.block.ModBlocks;
@@ -32,6 +33,9 @@ public class ModMod implements ModInitializer {
 
 		// Register event handlers
 		EventHandlers.registerEvents();
+
+		// Register item groups
+		ModItemGroups.registerItemGroups();
 
 		// Register overlays
 		HudRenderCallback.EVENT.register((matrices, tickDelta) -> {

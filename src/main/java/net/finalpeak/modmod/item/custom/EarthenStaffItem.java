@@ -7,7 +7,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,14 +22,14 @@ public class EarthenStaffItem extends MagicTool {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (Screen.hasShiftDown()) {
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip.shift"));
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip.spell1"));
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip.spell2"));
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip.spell3"));
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip.spell4"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip.shift"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip.spell1"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip.spell2"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip.spell3"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip.spell4"));
         } else {
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip1"));
-            tooltip.add(new TranslatableText("item.modmod.earthen_staff.tooltip2"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip1"));
+            tooltip.add(Text.translatable("item.modmod.earthen_staff.tooltip2"));
         }
     }
 

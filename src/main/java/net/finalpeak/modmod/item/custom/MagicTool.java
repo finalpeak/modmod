@@ -60,7 +60,7 @@ public class MagicTool extends Item {
         // Add input and play the corresponding sound
         inputs.add(input);
         if (input.equals("R")) {
-            Sounds.playSound(world, user, SoundEvents.BLOCK_NOTE_BLOCK_HARP);
+            Sounds.playSound(world, user, SoundEvents.ENTITY_ARROW_HIT);
         } else {
             Sounds.playSound(world, user, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP);
         }
