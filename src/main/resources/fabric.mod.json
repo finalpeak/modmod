@@ -23,6 +23,9 @@
     ],
     "client": [
       "net.finalpeak.modmod.ModModClient"
+    ],
+    "fabric-datagen": [
+      "net.finalpeak.modmod.ModModDataGenerator"
     ]
   },
   "mixins": [

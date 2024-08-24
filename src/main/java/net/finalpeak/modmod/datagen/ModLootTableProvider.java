@@ -6,7 +6,7 @@ import net.finalpeak.modmod.block.ModBlocks;
 import net.finalpeak.modmod.item.ModItems;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
-    protected ModLootTableProvider(FabricDataOutput dataOutput) {
+    public ModLootTableProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

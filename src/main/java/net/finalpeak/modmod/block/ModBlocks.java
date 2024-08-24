@@ -28,23 +28,22 @@ public class ModBlocks {
 
 
     public static final Block PANDO_LOG = registerBlock("pando_log",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block PANDO_WOOD = registerBlock("pando_wood",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block STRIPPED_PANDO_LOG = registerBlock("stripped_pando_log",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block STRIPPED_PANDO_WOOD = registerBlock("stripped_pando_wood",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block PANDO_PLANKS = registerBlock("pando_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block PANDO_LEAVES = registerBlock("pando_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
-
 
 
 

@@ -10,23 +10,14 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModBlockTagProvider extends FabricTagProvider {
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registryKey
-     * @param registriesFuture the backing registry for the tag type
-     */
-    public ModBlockTagProvider(FabricDataOutput output, RegistryKey registryKey, CompletableFuture registriesFuture) {
-        super(output, registryKey, registriesFuture);
+public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+    public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ItemTags.PLANKS)
+        getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.PANDO_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
@@ -34,6 +25,5 @@ public class ModBlockTagProvider extends FabricTagProvider {
                 .add(ModBlocks.PANDO_WOOD)
                 .add(ModBlocks.STRIPPED_PANDO_LOG)
                 .add(ModBlocks.STRIPPED_PANDO_WOOD);
-
     }
 }
