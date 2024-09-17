@@ -21,7 +21,7 @@ public class ModItems {
     public static final Item REFINED_GNOMITE =  registerItem("refined_gnomite", 
             new Item(new FabricItemSettings()));
             
-    public static final Item GNOMIC_STAFF = registerItem("earthen_staff",
+    public static final Item EARTHEN_STAFF = registerItem("earthen_staff",
             new EarthenStaffItem(new FabricItemSettings().maxDamage(16)));
 
     public static final Item GNOMIC_TOME = registerItem("gnomic_tome",

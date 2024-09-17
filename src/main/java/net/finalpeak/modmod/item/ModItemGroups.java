@@ -21,7 +21,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GNOMITE_BLOCK);
                         entries.add(ModBlocks.GNOMITE_ORE);
 
-                        entries.add(ModItems.GNOMIC_STAFF);
+                        entries.add(ModItems.EARTHEN_STAFF);
                         entries.add(ModItems.GNOMIC_TOME);
                         entries.add(ModItems.AZURE_SHARD);
 
