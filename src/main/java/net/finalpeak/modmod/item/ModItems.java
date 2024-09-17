@@ -31,7 +31,7 @@ public class ModItems {
             new AzureShardItem(new FabricItemSettings().maxDamage(16)));
 
     public static final Item MYSTIC_MUSHROOM_ITEM = registerItem("mystic_mushroom_item",
-            new BlockItem(ModBlocks.MYSTIC_MUSHROOM_BLOCK, new FabricItemSettings().food(ModFoodComponents.MYSTIC_MUSHROOM)));
+            new BlockItem(ModBlocks.MYSTIC_MUSHROOM, new FabricItemSettings().food(ModFoodComponents.MYSTIC_MUSHROOM)));
 
 
 

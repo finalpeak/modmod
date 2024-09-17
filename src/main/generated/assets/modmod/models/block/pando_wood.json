@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "modmod:block/pando_log",
+    "side": "modmod:block/pando_log"
+  }
+}

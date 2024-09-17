@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "modmod:block/mystic_mushroom_block"
+  }
+}

@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 public class ModItemGroups {
     public static final ItemGroup GNOME_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(ModMod.MOD_ID, "gnome_group"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.gnome_group"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.modmod.gnome_group"))
                     .icon(() -> new ItemStack(ModItems.REFINED_GNOMITE)).entries((displayContext, entries) -> {
 
                         entries.add(ModItems.GNOMITE);
@@ -33,6 +33,15 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STRIPPED_PANDO_WOOD);
                         entries.add(ModBlocks.PANDO_PLANKS);
                         entries.add(ModBlocks.PANDO_LEAVES);
+
+                        entries.add(ModBlocks.PANDO_STAIRS);
+                        entries.add(ModBlocks.PANDO_SLAB);
+                        entries.add(ModBlocks.PANDO_BUTTON);
+                        entries.add(ModBlocks.PANDO_PRESSURE_PLATE);
+                        entries.add(ModBlocks.PANDO_FENCE);
+                        entries.add(ModBlocks.PANDO_FENCE_GATE);
+                        entries.add(ModBlocks.PANDO_DOOR);
+                        entries.add(ModBlocks.PANDO_TRAPDOOR);
 
                     }).build());
 

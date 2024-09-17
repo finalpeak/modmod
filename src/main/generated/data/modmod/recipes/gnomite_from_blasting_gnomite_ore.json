@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "gnomite",
+  "ingredient": {
+    "item": "modmod:gnomite_ore"
+  },
+  "result": "modmod:gnomite"
+}

@@ -30,15 +30,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GNOMITE_BLOCK);
         addDrop(ModBlocks.GNOMITE_ORE, copperLikeOreDrops(ModBlocks.GNOMITE_ORE, ModItems.GNOMITE));
 
-        addDrop(ModBlocks.MYSTIC_MUSHROOM_BLOCK);
+        addDrop(ModBlocks.MYSTIC_MUSHROOM);
 
         addDrop(ModBlocks.PANDO_LOG);
         addDrop(ModBlocks.PANDO_WOOD);
         addDrop(ModBlocks.STRIPPED_PANDO_LOG);
         addDrop(ModBlocks.STRIPPED_PANDO_WOOD);
         addDrop(ModBlocks.PANDO_PLANKS);
-        addDrop(ModBlocks.PANDO_LEAVES, leavesDrops(ModBlocks.PANDO_LEAVES, ModBlocks.MYSTIC_MUSHROOM_BLOCK, 0.5f)); // TODO
+        addDrop(ModBlocks.PANDO_LEAVES, leavesDrops(ModBlocks.PANDO_LEAVES, ModBlocks.MYSTIC_MUSHROOM, 0.5f)); // TODO
 
+        addDrop(ModBlocks.PANDO_SAPLING);
+
+        addDrop(ModBlocks.PANDO_STAIRS);
+        addDrop(ModBlocks.PANDO_BUTTON);
+        addDrop(ModBlocks.PANDO_PRESSURE_PLATE);
+        addDrop(ModBlocks.PANDO_FENCE);
+        addDrop(ModBlocks.PANDO_FENCE_GATE);
+        addDrop(ModBlocks.PANDO_TRAPDOOR);
+        addDrop(ModBlocks.PANDO_DOOR, doorDrops(ModBlocks.PANDO_DOOR));
+        addDrop(ModBlocks.PANDO_SLAB, slabDrops(ModBlocks.PANDO_SLAB));
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

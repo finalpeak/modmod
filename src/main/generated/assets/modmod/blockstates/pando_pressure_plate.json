@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "modmod:block/pando_pressure_plate"
+    },
+    "powered=true": {
+      "model": "modmod:block/pando_pressure_plate_down"
+    }
+  }
+}

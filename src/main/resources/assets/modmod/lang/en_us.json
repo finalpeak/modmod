@@ -1,5 +1,5 @@
 {
-  "itemGroup.modmod.gnome_group": "Gnome",
+  "itemgroup.modmod.gnome_group": "Gnome",
 
   "item.modmod.earthen_staff": "Earthen Staff",
   "item.modmod.earthen_staff.tooltip.shift": "Use left and right click to cast spells",
@@ -43,6 +43,15 @@
   "block.modmod.stripped_pando_log": "Stripped Pando Log",
   "block.modmod.stripped_pando_wood": "Stripped Pando Wood",
   "block.modmod.pando_planks": "Pando Planks",
-  "block.modmod.pando_leaves": "Pando Leaves"
+  "block.modmod.pando_leaves": "Pando Leaves",
+
+  "block.modmod.pando_stairs": "Pando Stairs",
+  "block.modmod.pando_slab": "Pando Slab",
+  "block.modmod.pando_button": "Pando Button",
+  "block.modmod.pando_pressure_plate": "Pando Pressure Plate",
+  "block.modmod.pando_fence": "Pando Fence",
+  "block.modmod.pando_fence_gate": "Pando Fence Gate",
+  "block.modmod.pando_door": "Pando Door",
+  "block.modmod.pando_trapdoor": "Pando Trapdoor"
 
 }

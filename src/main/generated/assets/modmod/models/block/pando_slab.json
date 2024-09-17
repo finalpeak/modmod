@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "modmod:block/pando_planks",
+    "side": "modmod:block/pando_planks",
+    "top": "modmod:block/pando_planks"
+  }
+}

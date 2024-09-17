@@ -1,19 +1,15 @@
 package net.finalpeak.modmod;
 
-import net.finalpeak.modmod.client.overlay.ShardOverlay;
-import net.finalpeak.modmod.item.ModItemGroups;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.finalpeak.modmod.block.ModBlocks;
-import net.finalpeak.modmod.client.overlay.StaffOverlay;
-import net.finalpeak.modmod.client.overlay.TomeOverlay;
 import net.finalpeak.modmod.events.EventHandlers;
+import net.finalpeak.modmod.item.ModItemGroups;
 import net.finalpeak.modmod.item.ModItems;
-import net.finalpeak.modmod.item.custom.AzureShardItem;
-import net.finalpeak.modmod.item.custom.EarthenStaffItem;
-import net.finalpeak.modmod.item.custom.GnomicTomeItem;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.item.ItemStack;
+import net.finalpeak.modmod.util.ModLootTableModifiers;
+import net.finalpeak.modmod.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,36 +23,33 @@ public class ModMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// Register mod items
+		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
-
-		// Register mod blocks
 		ModBlocks.registerModBlocks();
 
-		// Register event handlers
-		EventHandlers.registerEvents();
+		ModLootTableModifiers.modifyLootTables();
 
-		// Register item groups
-		ModItemGroups.registerItemGroups();
+		ModWorldGeneration.generateModWorldGen();
 
-		// Register overlays
-		HudRenderCallback.EVENT.register((matrices, tickDelta) -> {
-			MinecraftClient client = MinecraftClient.getInstance();
-			if (client.player != null) {
-				ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
-				if (heldItem.getItem() instanceof GnomicTomeItem) {
-					new TomeOverlay().render(matrices);
-				}
-				if (heldItem.getItem() instanceof EarthenStaffItem) {
-					new StaffOverlay().render(matrices);
-				}
-				if (heldItem.getItem() instanceof AzureShardItem) {
-					new ShardOverlay().render(matrices);
-				}
-			}
-		});
+		// Register strippable blocks
+		StrippableBlockRegistry.register(ModBlocks.PANDO_LOG, ModBlocks.STRIPPED_PANDO_LOG);
+		StrippableBlockRegistry.register(ModBlocks.PANDO_WOOD, ModBlocks.STRIPPED_PANDO_WOOD);
 
-		// Log mod initialization
-		LOGGER.info("ModMod initialized successfully!");
+		// Register flammable blocks
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PANDO_LOG, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PANDO_WOOD, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_PANDO_LOG, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_PANDO_WOOD, 5, 5);
+
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PANDO_PLANKS, 5, 20);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PANDO_LEAVES, 30, 60);
+
+		FuelRegistry.INSTANCE.add(ModBlocks.PANDO_LOG, 300);
+		FuelRegistry.INSTANCE.add(ModBlocks.PANDO_WOOD, 300);
+		FuelRegistry.INSTANCE.add(ModBlocks.STRIPPED_PANDO_LOG, 300);
+		FuelRegistry.INSTANCE.add(ModBlocks.STRIPPED_PANDO_WOOD, 300);
+		FuelRegistry.INSTANCE.add(ModBlocks.PANDO_PLANKS, 300);
+		FuelRegistry.INSTANCE.add(ModBlocks.PANDO_SAPLING, 100);
+
 	}
 }
