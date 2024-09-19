@@ -62,27 +62,27 @@ public class ModConfiguredFeatures {
 
         register(context, TEST_GEODE_KEY, Feature.GEODE, new GeodeFeatureConfig(
                 new GeodeLayerConfig(
-                        BlockStateProvider.of(ModBlocks.GNOMITE_BLOCK), // Filling provider
-                        BlockStateProvider.of(ModBlocks.GNOMITE_BLOCK), // Inner layer provider
-                        BlockStateProvider.of(ModBlocks.GNOMITE_BLOCK), // Alternate inner layer provider
-                        BlockStateProvider.of(ModBlocks.GNOMITE_BLOCK), // Middle layer provider
-                        BlockStateProvider.of(ModBlocks.GNOMITE_BLOCK), // Outer layer provider
-                        List.of(Blocks.AIR.getDefaultState(), ModBlocks.GNOMITE_BLOCK.getDefaultState()), // Inner blocks list
+                        BlockStateProvider.of(Blocks.AIR), // Filling provider
+                        BlockStateProvider.of(Blocks.AMETHYST_BLOCK), // Inner layer provider
+                        BlockStateProvider.of(Blocks.BUDDING_AMETHYST), // Alternate inner layer provider
+                        BlockStateProvider.of(Blocks.CALCITE), // Middle layer provider
+                        BlockStateProvider.of(Blocks.SMOOTH_BASALT), // Outer layer provider
+                        List.of(Blocks.AIR.getDefaultState(), Blocks.WATER.getDefaultState()), // Inner blocks list
                         BlockTags.BASE_STONE_OVERWORLD, // Blocks that cannot be replaced
                         BlockTags.FEATURES_CANNOT_REPLACE // Invalid blocks
                 ),
-                new GeodeLayerThicknessConfig(1, 2, 3, 4),
-                new GeodeCrackConfig(0.75, 1, 1),
-                0.1,
-                0.1,
-                false,
-                UniformIntProvider.create(1, 5),
-                UniformIntProvider.create(1, 5),
-                UniformIntProvider.create(1, 5),
-                10,
-                0,
-                1.0,
-                10
+                new GeodeLayerThicknessConfig(1.7, 2.2, 3.2, 4.2), // Thickness of the layers
+                new GeodeCrackConfig(0.95, 2.0, 2), // Cracks in the geode
+                0.35, // Crack chance
+                0.083, // Use alternate inner layer chance
+                true, // Placement of outer layer
+                UniformIntProvider.create(4, 6), // Min/Max points offset
+                UniformIntProvider.create(3, 4), // Distribution points
+                UniformIntProvider.create(1, 2), // Point offset
+                -30, // Min Y
+                100, // Max Y
+                1, // Max chance (1 for testing, 0.05 REAL)
+                0
         ));
 
     }

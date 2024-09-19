@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import java.util.List;
@@ -15,6 +16,7 @@ import net.finalpeak.modmod.ModMod;
 
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> GNOMITE_ORE_PLACED_KEY = registerKey("gnomite_ore_placed");
+    public static final RegistryKey<PlacedFeature> TEST_GEODE_PLACED_KEY = registerKey("gnomite_ore_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context){
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -22,6 +24,11 @@ public class ModPlacedFeatures {
         register(context, GNOMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GNOMITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(12,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
+//        register(context, TEST_GEODE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TEST_GEODE_KEY),
+//                CountPlacementModifier.of(1, // Number of geodes per chunk
+//                      HeightRangePlacementModifier.uniform(YOffset.fixed(6), YOffset.fixed(48)) // Geode Y range
+//        ));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
