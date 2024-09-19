@@ -1,6 +1,6 @@
 package net.finalpeak.modmod.item.custom;
 
-import net.finalpeak.modmod.util.Spells;
+import net.finalpeak.modmod.item.custom.util.Spells;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 
@@ -36,7 +36,7 @@ public class EarthenStaffItem extends MagicTool {
     public void spells(World world, PlayerEntity player) {
         spelling = true;
         Timer timer = new Timer();
-        int delay = 0;
+        int delay = 500;
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("R", "R", "R")))) {
             if (Spells.launch(world, player, 0.5, 1)) {
@@ -49,18 +49,21 @@ public class EarthenStaffItem extends MagicTool {
             if (Spells.spell2(world, player)) {
                 removeMagic(1);
             }
+            delay = 500;
         }
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("L", "L", "L")))) {
             if (Spells.spell3(world, player)) {
                 removeMagic(1);
             }
+            delay = 500;
         }
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("L", "R", "L")))) {
             if (Spells.spell4(world, player)) {
                 removeMagic(1);
             }
+            delay = 500;
         }
 
         timer.schedule(new TimerTask() {

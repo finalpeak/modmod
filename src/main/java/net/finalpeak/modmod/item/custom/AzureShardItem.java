@@ -1,6 +1,6 @@
 package net.finalpeak.modmod.item.custom;
 
-import net.finalpeak.modmod.util.Spells;
+import net.finalpeak.modmod.item.custom.util.Spells;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;

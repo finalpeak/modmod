@@ -1,4 +1,4 @@
-package net.finalpeak.modmod.util;
+package net.finalpeak.modmod.item.custom.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

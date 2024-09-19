@@ -1,4 +1,4 @@
-package net.finalpeak.modmod.util;
+package net.finalpeak.modmod.item.custom.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -16,7 +16,7 @@ import java.util.TimerTask;
 
 public class Spells {
 
-    // Spell 1: Summon lightning at the block the player is looking at
+    // Summon lightning at the block the player is looking at
     public static boolean lightning(World world, PlayerEntity player) {
         int range = 30;
         Timer timer = new Timer();
@@ -53,22 +53,7 @@ public class Spells {
         return true;
     }
 
-    public static boolean spell2(World world, PlayerEntity player){
-        // Implement spell2
-        return false;
-    }
-
-    public static boolean spell3(World world, PlayerEntity player){
-        // Implement spell3
-        return false;
-    }
-
-    public static boolean spell4(World world, PlayerEntity player){
-        // Implement spell4
-        return false;
-    }
-
-
+    // Launch any entities around the area the player is looking at
     public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
 
         Entity targetEntity = Detection.raycastGetEntity(world, player, 30);
@@ -90,5 +75,21 @@ public class Spells {
         }
 
         return true;
+    }
+
+
+    public static boolean spell2(World world, PlayerEntity player){
+        // Implement spell2
+        return false;
+    }
+
+    public static boolean spell3(World world, PlayerEntity player){
+        // Implement spell3
+        return false;
+    }
+
+    public static boolean spell4(World world, PlayerEntity player){
+        // Implement spell4
+        return false;
     }
 }

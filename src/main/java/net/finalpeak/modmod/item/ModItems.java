@@ -22,13 +22,13 @@ public class ModItems {
             new Item(new FabricItemSettings()));
             
     public static final Item EARTHEN_STAFF = registerItem("earthen_staff",
-            new EarthenStaffItem(new FabricItemSettings().maxDamage(16)));
+            new EarthenStaffItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item GNOMIC_TOME = registerItem("gnomic_tome",
-            new GnomicTomeItem(new FabricItemSettings().maxDamage(16)));
+            new GnomicTomeItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item AZURE_SHARD = registerItem("azure_shard",
-            new AzureShardItem(new FabricItemSettings().maxDamage(16)));
+            new AzureShardItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item MYSTIC_MUSHROOM_ITEM = registerItem("mystic_mushroom_item",
             new BlockItem(ModBlocks.MYSTIC_MUSHROOM, new FabricItemSettings().food(ModFoodComponents.MYSTIC_MUSHROOM)));
