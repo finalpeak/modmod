@@ -72,7 +72,7 @@ public class ModConfiguredFeatures {
                         BlockTags.FEATURES_CANNOT_REPLACE // Invalid blocks
                 ),
                 new GeodeLayerThicknessConfig(1.7, 2.2, 3.2, 4.2), // Thickness of the layers
-                new GeodeCrackConfig(0.95, 2.0, 2), // Cracks in the geode
+                new GeodeCrackConfig(0, 2.0, 2), // Cracks in the geode
                 0.35, // Crack chance
                 0.083, // Use alternate inner layer chance
                 true, // Placement of outer layer
@@ -81,8 +81,8 @@ public class ModConfiguredFeatures {
                 UniformIntProvider.create(1, 2), // Point offset
                 -30, // Min Y
                 100, // Max Y
-                1, // Max chance (1 for testing, 0.05 REAL)
-                0
+                0.05, // Max chance (1 for testing, 0.05 REAL)
+                1
         ));
 
     }
