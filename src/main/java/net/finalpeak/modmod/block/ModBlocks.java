@@ -21,7 +21,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).strength(3f).requiresTool()));
 
     public static final Block MYSTIC_MUSHROOM = registerBlock("mystic_mushroom_block",
-            new MushroomPlantBlock(ModConfiguredFeatures.MYSTIC_MUSHROOM_KEY, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new MushroomPlantBlock(ModConfiguredFeatures.MYSTIC_MUSHROOM_KEY, FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM)));
 
     // Logs and Wood need PillarBlock due to their axis property
     public static final Block PANDO_LOG = registerBlock("pando_log",
