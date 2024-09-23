@@ -3,6 +3,8 @@ package net.finalpeak.modmod.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.finalpeak.modmod.ModMod;
+import net.finalpeak.modmod.block.custom.BuddingPeridotBlock;
+import net.finalpeak.modmod.block.custom.PeridotClusterBlock;
 import net.finalpeak.modmod.world.ModConfiguredFeatures;
 import net.finalpeak.modmod.world.tree.ModSaplingGenerators;
 import net.minecraft.block.*;
@@ -14,22 +16,29 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block GNOMITE_BLOCK = registerBlock("gnomite_block",
+    public static final Block BLOCK_OF_GNOMITE = registerBlock("gnomite_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(6f).requiresTool()));
-
     public static final Block GNOMITE_ORE = registerBlock("gnomite_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).strength(3f).requiresTool()));
 
-    public static final Block MYSTIC_MUSHROOM = registerBlock("mystic_mushroom_block",
-            new MushroomPlantBlock(ModConfiguredFeatures.MYSTIC_MUSHROOM_KEY, FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM)));
+    public static final Block BLOCK_OF_PERIDOT = registerBlock("peridot_block",
+            new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
+    public static final Block BUDDING_PERIDOT = registerBlock("budding_peridot_block",
+            new BuddingPeridotBlock(FabricBlockSettings.copyOf(Blocks.BUDDING_AMETHYST)));
+    public static final Block SMALL_PERIDOT_BUD = registerBlock("small_peridot_bud",
+            new PeridotClusterBlock(3.0f, 5.0f, FabricBlockSettings.copyOf(Blocks.SMALL_AMETHYST_BUD)));
+    public static final Block MEDIUM_PERIDOT_BUD = registerBlock("medium_peridot_bud",
+            new PeridotClusterBlock(4.0f, 4.0f, FabricBlockSettings.copyOf(Blocks.MEDIUM_AMETHYST_BUD)));
+    public static final Block LARGE_PERIDOT_BUD = registerBlock("large_peridot_bud",
+            new PeridotClusterBlock(5.0f, 3.0f, FabricBlockSettings.copyOf(Blocks.LARGE_AMETHYST_BUD)));
+    public static final Block PERIDOT_CLUSTER = registerBlock("peridot_cluster",
+            new PeridotClusterBlock(6.0f, 2.0f, FabricBlockSettings.copyOf(Blocks.AMETHYST_CLUSTER)));
 
     // Logs and Wood need PillarBlock due to their axis property
     public static final Block PANDO_LOG = registerBlock("pando_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
-
     public static final Block PANDO_WOOD = registerBlock("pando_wood",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
-
     public static final Block STRIPPED_PANDO_LOG = registerBlock("stripped_pando_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
     public static final Block STRIPPED_PANDO_WOOD = registerBlock("stripped_pando_wood",
@@ -46,22 +55,21 @@ public class ModBlocks {
             new StairsBlock(ModBlocks.PANDO_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
     public static final Block PANDO_SLAB = registerBlock("pando_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
-
     public static final Block PANDO_BUTTON = registerBlock("pando_button",
             new ButtonBlock(BlockSetType.OAK, 15, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
     public static final Block PANDO_PRESSURE_PLATE = registerBlock("pando_pressure_plate",
             new PressurePlateBlock(BlockSetType.OAK, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
-
     public static final Block PANDO_FENCE = registerBlock("pando_fence",
             new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
     public static final Block PANDO_FENCE_GATE = registerBlock("pando_fence_gate",
             new FenceGateBlock(WoodType.OAK, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
-
     public static final Block PANDO_DOOR = registerBlock("pando_door",
             new DoorBlock(BlockSetType.OAK, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
     public static final Block PANDO_TRAPDOOR = registerBlock("pando_trapdoor",
             new TrapdoorBlock(BlockSetType.OAK, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
 
+    public static final Block MYSTIC_MUSHROOM = registerBlock("mystic_mushroom_block",
+            new MushroomPlantBlock(ModConfiguredFeatures.MYSTIC_MUSHROOM_KEY, FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM)));
 
 
     private static Block registerBlock(String name, Block block) {

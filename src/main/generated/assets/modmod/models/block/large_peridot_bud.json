@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "modmod:block/large_peridot_bud"
+  }
+}

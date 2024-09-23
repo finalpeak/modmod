@@ -8,17 +8,14 @@ import net.minecraft.block.Block;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.AnyOfLootCondition;
-import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.predicate.StatePredicate;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public ModLootTableProvider(FabricDataOutput dataOutput) {
@@ -27,7 +24,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.GNOMITE_BLOCK);
+        addDrop(ModBlocks.BLOCK_OF_GNOMITE);
         addDrop(ModBlocks.GNOMITE_ORE, copperLikeOreDrops(ModBlocks.GNOMITE_ORE, ModItems.GNOMITE));
 
         addDrop(ModBlocks.MYSTIC_MUSHROOM);
@@ -49,6 +46,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PANDO_TRAPDOOR);
         addDrop(ModBlocks.PANDO_DOOR, doorDrops(ModBlocks.PANDO_DOOR));
         addDrop(ModBlocks.PANDO_SLAB, slabDrops(ModBlocks.PANDO_SLAB));
+
+        addDrop(ModBlocks.BLOCK_OF_PERIDOT);
+        addDropWithSilkTouch(ModBlocks.SMALL_PERIDOT_BUD);
+        addDropWithSilkTouch(ModBlocks.MEDIUM_PERIDOT_BUD);
+        addDropWithSilkTouch(ModBlocks.LARGE_PERIDOT_BUD);
+        addDrop(ModBlocks.PERIDOT_CLUSTER, BlockLootTableGenerator.dropsWithSilkTouch(ModBlocks.PERIDOT_CLUSTER, ItemEntry.builder(ModItems.PERIDOT_SHARD)));
+
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

@@ -7,8 +7,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-import java.util.function.BiConsumer;
-
 public class ModFeatures {
 
     public static void placeFeaturesInBiomes() {
@@ -17,15 +15,14 @@ public class ModFeatures {
                 new Identifier(ModMod.MOD_ID, "geode_additions")
         );
 
-        modification
-                .add(
-                        ModificationPhase.ADDITIONS,
-                        BiomeSelectors.tag(ModBiomeTags.HAS_EMERALD_GEODE),
-                        modifier(
-                                ModPlacedFeatures.EMERALD_GEODE,
-                                GenerationStep.Feature.UNDERGROUND_DECORATION,
-                                MoreGeodes.CONFIG.generateEmeraldGeodes()
-                        )
-                );
+        modification.add(
+                ModificationPhase.ADDITIONS,
+                BiomeSelectors.foundInOverworld(), //.tag(ModBiomeTags.HAS_EMERALD_GEODE)
+                context -> context.getGenerationSettings().addFeature(
+                        GenerationStep.Feature.UNDERGROUND_DECORATION,
+                        ModPlacedFeatures.TEST_GEODE_PLACED_KEY
+                        //MoreGeodes.CONFIG.generateEmeraldGeodes()
+                )
+        );
     }
 }

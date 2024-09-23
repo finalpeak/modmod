@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.finalpeak.modmod.block.ModBlocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,12 +17,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.GNOMITE_BLOCK)
+                .add(ModBlocks.BLOCK_OF_GNOMITE)
                 .add(ModBlocks.GNOMITE_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.GNOMITE_ORE)
-                .add(ModBlocks.GNOMITE_BLOCK);
+                .add(ModBlocks.BLOCK_OF_GNOMITE);
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(ModBlocks.PANDO_FENCE);

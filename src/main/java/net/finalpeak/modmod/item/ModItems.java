@@ -17,16 +17,16 @@ public class ModItems {
 
     public static final Item GNOMITE = registerItem("gnomite", 
             new Item(new FabricItemSettings()));
-
     public static final Item REFINED_GNOMITE =  registerItem("refined_gnomite", 
+            new Item(new FabricItemSettings()));
+
+    public static final Item PERIDOT_SHARD =  registerItem("peridot_shard",
             new Item(new FabricItemSettings()));
             
     public static final Item EARTHEN_STAFF = registerItem("earthen_staff",
             new EarthenStaffItem(new FabricItemSettings().maxCount(1)));
-
     public static final Item GNOMIC_TOME = registerItem("gnomic_tome",
             new GnomicTomeItem(new FabricItemSettings().maxCount(1)));
-
     public static final Item AZURE_SHARD = registerItem("azure_shard",
             new AzureShardItem(new FabricItemSettings().maxCount(1)));
 

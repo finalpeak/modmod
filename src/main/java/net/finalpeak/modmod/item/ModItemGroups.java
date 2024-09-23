@@ -18,7 +18,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.GNOMITE);
                         entries.add(ModItems.REFINED_GNOMITE);
-                        entries.add(ModBlocks.GNOMITE_BLOCK);
+                        entries.add(ModBlocks.BLOCK_OF_GNOMITE);
                         entries.add(ModBlocks.GNOMITE_ORE);
 
                         entries.add(ModItems.EARTHEN_STAFF);
@@ -42,6 +42,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PANDO_FENCE_GATE);
                         entries.add(ModBlocks.PANDO_DOOR);
                         entries.add(ModBlocks.PANDO_TRAPDOOR);
+
+                        entries.add(ModBlocks.BLOCK_OF_PERIDOT);
+                        entries.add(ModBlocks.BUDDING_PERIDOT);
+                        entries.add(ModBlocks.SMALL_PERIDOT_BUD);
+                        entries.add(ModBlocks.MEDIUM_PERIDOT_BUD);
+                        entries.add(ModBlocks.LARGE_PERIDOT_BUD);
+                        entries.add(ModBlocks.PERIDOT_CLUSTER);
 
                     }).build());
 

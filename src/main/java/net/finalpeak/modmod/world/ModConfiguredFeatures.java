@@ -2,15 +2,11 @@ package net.finalpeak.modmod.world;
 
 import net.finalpeak.modmod.ModMod;
 import net.finalpeak.modmod.block.ModBlocks;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
@@ -63,25 +59,25 @@ public class ModConfiguredFeatures {
         register(context, TEST_GEODE_KEY, Feature.GEODE, new GeodeFeatureConfig(
                 new GeodeLayerConfig(
                         BlockStateProvider.of(Blocks.AIR), // Filling provider
-                        BlockStateProvider.of(Blocks.AMETHYST_BLOCK), // Inner layer provider
-                        BlockStateProvider.of(Blocks.BUDDING_AMETHYST), // Alternate inner layer provider
+                        BlockStateProvider.of(ModBlocks.BLOCK_OF_PERIDOT), // Inner layer provider
+                        BlockStateProvider.of(ModBlocks.BUDDING_PERIDOT), // Alternate inner layer provider
                         BlockStateProvider.of(Blocks.CALCITE), // Middle layer provider
                         BlockStateProvider.of(Blocks.SMOOTH_BASALT), // Outer layer provider
-                        List.of(Blocks.AIR.getDefaultState(), Blocks.WATER.getDefaultState()), // Inner blocks list
-                        BlockTags.BASE_STONE_OVERWORLD, // Blocks that cannot be replaced
+                        List.of(Blocks.AIR.getDefaultState(), ModBlocks.PERIDOT_CLUSTER.getDefaultState()), // Inner blocks list
+                        BlockTags.FEATURES_CANNOT_REPLACE, // Blocks that cannot be replaced
                         BlockTags.FEATURES_CANNOT_REPLACE // Invalid blocks
                 ),
-                new GeodeLayerThicknessConfig(1.7, 2.2, 3.2, 4.2), // Thickness of the layers
-                new GeodeCrackConfig(0, 2.0, 2), // Cracks in the geode
-                0.35, // Crack chance
-                0.083, // Use alternate inner layer chance
-                true, // Placement of outer layer
-                UniformIntProvider.create(4, 6), // Min/Max points offset
-                UniformIntProvider.create(3, 4), // Distribution points
-                UniformIntProvider.create(1, 2), // Point offset
-                -30, // Min Y
-                100, // Max Y
-                0.05, // Max chance (1 for testing, 0.05 REAL)
+                new GeodeLayerThicknessConfig(1.7/2, 2.2/2, 3.2/2, 4.2/2),
+                new GeodeCrackConfig(0.35, 2.0, 2),
+                0.35,
+                0.15,
+                true,
+                UniformIntProvider.create(4, 6),
+                UniformIntProvider.create(3, 4),
+                UniformIntProvider.create(1, 2),
+                -30,
+                100,
+                0.05,
                 1
         ));
 
