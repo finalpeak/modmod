@@ -1,6 +1,8 @@
 {
   "itemgroup.modmod.gnome_group": "Gnome",
 
+  "death.attack.gnomic": "%1$s died from Gnomic Sorcery",
+
   "item.modmod.earthen_staff": "Earthen Staff",
   "item.modmod.earthen_staff.tooltip.shift": "Use left and right click to cast spells",
   "item.modmod.earthen_staff.tooltip.spell1": "[R - R - R] Earthquake",

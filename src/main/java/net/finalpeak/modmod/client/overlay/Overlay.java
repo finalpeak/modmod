@@ -44,12 +44,10 @@ public class Overlay {
     public void inputDrawer(int index, int xOffset, int yOffset, float sizeCof,
                             MagicTool item, DrawContext context, MinecraftClient client){
         if (item.getInputs().size() >= index+1) {
-            checkLR(item, index, context);
-
             int x = (int)((client.getWindow().getScaledWidth() - 256) / 2 + xOffset * sizeCof);
             int y = (int)((client.getWindow().getScaledHeight() - 256) / 2 + yOffset * sizeCof);
             context.drawTexture(
-                    checkLR(item, 1, context),
+                    checkLR(item, index, context),
                     x, y, 0, 0, 256, 256, 256, 256);
         }
     }

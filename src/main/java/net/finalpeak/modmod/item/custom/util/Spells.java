@@ -1,5 +1,6 @@
 package net.finalpeak.modmod.item.custom.util;
 
+import net.finalpeak.modmod.damage.ModDamageTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -97,7 +98,7 @@ public class Spells {
             entity.setVelocity(finalVelocity);
             entity.velocityModified = true;
             if (entity != player){
-                //entity.damage(8);
+                entity.damage(ModDamageTypes.of(world, ModDamageTypes.GNOMIC), 8.0f);
             }
         }
 

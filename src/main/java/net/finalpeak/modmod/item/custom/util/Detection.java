@@ -72,7 +72,7 @@ public class Detection {
 
     private static EntityHitResult getEntityHitResult(World world, Vec3d start, Vec3d end, PlayerEntity player) {
         // Define the search area around the raycast
-        Box box = new Box(start, end).expand(0.25); // Adjust the expansion as needed
+        Box box = new Box(start, end).expand(0); // Adjust the expansion as needed
 
         // Get all entities within the bounding box
         List<Entity> entities = world.getEntitiesByClass(Entity.class, box, e -> e != player);
