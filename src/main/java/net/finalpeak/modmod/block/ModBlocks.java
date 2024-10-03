@@ -23,7 +23,7 @@ public class ModBlocks {
 
     public static final Block BLOCK_OF_PERIDOT = registerBlock("peridot_block",
             new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
-    public static final Block BUDDING_PERIDOT = registerBlock("budding_peridot_block",
+    public static final Block BUDDING_PERIDOT = registerBlock("budding_peridot",
             new BuddingPeridotBlock(FabricBlockSettings.copyOf(Blocks.BUDDING_AMETHYST)));
     public static final Block SMALL_PERIDOT_BUD = registerBlock("small_peridot_bud",
             new PeridotClusterBlock(3.0f, 5.0f, FabricBlockSettings.copyOf(Blocks.SMALL_AMETHYST_BUD)));

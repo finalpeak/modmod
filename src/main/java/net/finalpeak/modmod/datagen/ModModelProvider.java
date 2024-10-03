@@ -53,7 +53,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GNOMITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.REFINED_GNOMITE, Models.GENERATED);
 
-        itemModelGenerator.register(ModBlocks.SMALL_PERIDOT_BUD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PERIDOT_SHARD, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.EARTHEN_STAFF, Models.GENERATED);

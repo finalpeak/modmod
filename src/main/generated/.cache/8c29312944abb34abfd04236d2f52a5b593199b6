@@ -1,7 +1,7 @@
-// 1.20.4	2024-09-23T18:10:51.4454777	ModMod/Tags for minecraft:block
-3b522d92788c1fbd6bd413469a29a7afc16e79d5 data\minecraft\tags\blocks\saplings.json
-72e56328aeb0126dddf0150a4df2cf53240b3459 data\minecraft\tags\blocks\fence_gates.json
-465b46a72b97c168e189af1d59a1c4064d704123 data\minecraft\tags\blocks\fences.json
+// 1.20.4	2024-10-03T11:43:40.6352717	ModMod/Tags for minecraft:block
 01e936e2527c432ea6743184a9e643cbc4e3840f data\minecraft\tags\blocks\mineable\pickaxe.json
+3b522d92788c1fbd6bd413469a29a7afc16e79d5 data\minecraft\tags\blocks\saplings.json
+465b46a72b97c168e189af1d59a1c4064d704123 data\minecraft\tags\blocks\fences.json
 f6f8211b4f0e9c5a20249d4583b23faf9f38181e data\minecraft\tags\blocks\needs_iron_tool.json
+72e56328aeb0126dddf0150a4df2cf53240b3459 data\minecraft\tags\blocks\fence_gates.json
 c9f370d99ce34621cf06e67c71d10561fb775219 data\minecraft\tags\blocks\logs_that_burn.json
