@@ -18,6 +18,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         BlockStateModelGenerator.BlockTexturePool pandoPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PANDO_PLANKS);
 
+        blockStateModelGenerator.registerSimpleState(ModBlocks.IMBUING_TABLE);
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_GNOMITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GNOMITE_ORE);
 
@@ -53,7 +55,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GNOMITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.REFINED_GNOMITE, Models.GENERATED);
 
-        itemModelGenerator.register(ModBlocks.SMALL_PERIDOT_BUD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PERIDOT_SHARD, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.EARTHEN_STAFF, Models.GENERATED);

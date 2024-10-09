@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.finalpeak.modmod.ModMod;
 import net.finalpeak.modmod.block.custom.BuddingPeridotBlock;
+import net.finalpeak.modmod.block.custom.ImbuingTableBlock;
 import net.finalpeak.modmod.block.custom.PeridotClusterBlock;
 import net.finalpeak.modmod.world.ModConfiguredFeatures;
 import net.finalpeak.modmod.world.tree.ModSaplingGenerators;
@@ -15,6 +16,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
+
+    public static final Block IMBUING_TABLE = registerBlock("imbuing_table",
+            new ImbuingTableBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     public static final Block BLOCK_OF_GNOMITE = registerBlock("gnomite_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(6f).requiresTool()));
