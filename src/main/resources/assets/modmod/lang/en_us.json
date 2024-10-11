@@ -1,6 +1,8 @@
 {
   "itemgroup.modmod.gnome_group": "Gnome",
 
+  "death.attack.gnomic": "%1$s died from Gnomic Sorcery",
+
   "block.modmod.imbuing_table": "Imbuing Table",
 
   "item.modmod.earthen_staff": "Earthen Staff",
@@ -36,6 +38,15 @@
 
   "block.modmod.gnomite_block": "Gnomite Block",
   "block.modmod.gnomite_ore": "Gnomite Ore",
+
+  "block.modmod.peridot_block": "Block of Peridot",
+  "block.modmod.budding_peridot": "Budding Peridot",
+  "block.modmod.small_peridot_bud": "Small Peridot Bud",
+  "block.modmod.medium_peridot_bud": "Medium Peridot Bud",
+  "block.modmod.large_peridot_bud": "Large Peridot Bud",
+  "block.modmod.peridot_cluster": "Peridot Cluster",
+
+  "item.modmod.peridot_shard":"Peridot Shard",
 
   "item.modmod.mystic_mushroom_item": "Mystic Mushroom",
   "block.modmod.mystic_mushroom_block": "Mystic Mushroom",

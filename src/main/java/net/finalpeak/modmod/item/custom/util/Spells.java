@@ -1,8 +1,12 @@
 package net.finalpeak.modmod.item.custom.util;
 
+import net.finalpeak.modmod.damage.ModDamageTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.registry.Registries;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -54,14 +58,14 @@ public class Spells {
     }
 
     // Launch any entities around the area the player is looking at
-    public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
+    /*public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
 
         Entity targetEntity = Detection.raycastGetEntity(world, player, 30);
         if(targetEntity == null){
             return false;
         }
 
-        List<Entity> entities = Detection.nearbyEntities(targetEntity, 5);
+        List<Entity> entities = Detection.getEntitiesNearbyEntity(targetEntity, 5);
 
         Vec3d direction = player.getRotationVec(1.0F);
         Vec3d horizontalVelocity = direction.multiply(horizontalSpeed);
@@ -75,8 +79,31 @@ public class Spells {
         }
 
         return true;
-    }
+    }*/
 
+    public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
+
+        BlockPos targetBlock = Detection.raycastGetBlock(world, player, 30);
+        if(targetBlock == null){
+            return false;
+        }
+
+        List<Entity> entities = Detection.getEntitiesNearbyBlock(world, targetBlock, 5);
+
+        Vec3d direction = player.getRotationVec(1.0F);
+        Vec3d horizontalVelocity = direction.multiply(horizontalSpeed);
+        Vec3d finalVelocity = new Vec3d(horizontalVelocity.x, verticalSpeed, horizontalVelocity.z);
+
+        for(Entity entity: entities){
+            entity.setVelocity(finalVelocity);
+            entity.velocityModified = true;
+            if (entity != player){
+                entity.damage(ModDamageTypes.of(world, ModDamageTypes.GNOMIC), 8.0f);
+            }
+        }
+
+        return true;
+    }
 
     public static boolean spell2(World world, PlayerEntity player){
         // Implement spell2

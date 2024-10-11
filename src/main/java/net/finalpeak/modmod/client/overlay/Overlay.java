@@ -34,36 +34,21 @@ public class Overlay {
 
                 float sizeCof = 1.75f;
 
-                if (!item.getInputs().isEmpty()) {
-
-
-                    x = (int)((client.getWindow().getScaledWidth() - 256) / 2 - 35 * sizeCof);
-                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 - 20 * sizeCof);
-                    context.drawTexture(
-                            checkLR(item, 0, context),
-                            x, y, 0, 0, 256, 256, 256, 256);
-                }
-
-                if (item.getInputs().size() >= 2) {
-                    checkLR(item, 1, context);
-
-                    x = (int)((client.getWindow().getScaledWidth() - 256) / 2 + 35 * sizeCof);
-                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 - 20 * sizeCof);
-                    context.drawTexture(
-                            checkLR(item, 1, context),
-                            x, y, 0, 0, 256, 256, 256, 256);
-                }
-
-                if (item.getInputs().size() >= 3) {
-                    checkLR(item, 2, context);
-
-                    x = (client.getWindow().getScaledWidth() - 256) / 2;
-                    y = (int)((client.getWindow().getScaledHeight() - 256) / 2 + 40 * sizeCof);
-                    context.drawTexture(
-                            checkLR(item, 2, context),
-                            x, y, 0, 0, 256, 256, 256, 256);
-                }
+                inputDrawer(0, -35, -20, sizeCof, item, context, client);
+                inputDrawer(1, 35, -20, sizeCof, item, context, client);
+                inputDrawer(2, 0, 40, sizeCof, item, context, client);
             }
+        }
+    }
+
+    public void inputDrawer(int index, int xOffset, int yOffset, float sizeCof,
+                            MagicTool item, DrawContext context, MinecraftClient client){
+        if (item.getInputs().size() >= index+1) {
+            int x = (int)((client.getWindow().getScaledWidth() - 256) / 2 + xOffset * sizeCof);
+            int y = (int)((client.getWindow().getScaledHeight() - 256) / 2 + yOffset * sizeCof);
+            context.drawTexture(
+                    checkLR(item, index, context),
+                    x, y, 0, 0, 256, 256, 256, 256);
         }
     }
 
