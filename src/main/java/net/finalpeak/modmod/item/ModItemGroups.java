@@ -16,6 +16,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.modmod.gnome_group"))
                     .icon(() -> new ItemStack(ModItems.REFINED_GNOMITE)).entries((displayContext, entries) -> {
 
+                        entries.add(ModBlocks.IMBUING_TABLE);
+
                         entries.add(ModItems.GNOMITE);
                         entries.add(ModItems.REFINED_GNOMITE);
                         entries.add(ModBlocks.BLOCK_OF_GNOMITE);

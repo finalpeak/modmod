@@ -12,7 +12,10 @@ import net.finalpeak.modmod.events.EventHandlers;
 import net.finalpeak.modmod.item.custom.AzureShardItem;
 import net.finalpeak.modmod.item.custom.EarthenStaffItem;
 import net.finalpeak.modmod.item.custom.GnomicTomeItem;
+import net.finalpeak.modmod.screen.ImbuingScreen;
+import net.finalpeak.modmod.screen.ModScreenHandlers;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.finalpeak.modmod.block.ModBlocks;
 import net.minecraft.item.ItemStack;
@@ -31,6 +34,8 @@ public class ModModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MEDIUM_PERIDOT_BUD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LARGE_PERIDOT_BUD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PERIDOT_CLUSTER, RenderLayer.getCutout());
+
+        HandledScreens.register(ModScreenHandlers.IMBUING_SCREEN_HANDLER, ImbuingScreen::new);
 
         EventHandlers.registerEvents();
 

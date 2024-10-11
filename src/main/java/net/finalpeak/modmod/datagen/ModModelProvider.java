@@ -18,6 +18,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         BlockStateModelGenerator.BlockTexturePool pandoPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PANDO_PLANKS);
 
+        blockStateModelGenerator.registerSimpleState(ModBlocks.IMBUING_TABLE);
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_GNOMITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GNOMITE_ORE);
 

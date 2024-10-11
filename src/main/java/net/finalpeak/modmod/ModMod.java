@@ -5,9 +5,11 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.finalpeak.modmod.block.ModBlocks;
+import net.finalpeak.modmod.block.entity.ModBlockEntities;
 import net.finalpeak.modmod.events.EventHandlers;
 import net.finalpeak.modmod.item.ModItemGroups;
 import net.finalpeak.modmod.item.ModItems;
+import net.finalpeak.modmod.screen.ModScreenHandlers;
 import net.finalpeak.modmod.util.ModLootTableModifiers;
 import net.finalpeak.modmod.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class ModMod implements ModInitializer {
 		ModLootTableModifiers.modifyLootTables();
 
 		ModWorldGeneration.generateModWorldGen();
+
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 
 		// Register strippable blocks
 		StrippableBlockRegistry.register(ModBlocks.PANDO_LOG, ModBlocks.STRIPPED_PANDO_LOG);
