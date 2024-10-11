@@ -72,16 +72,20 @@ public class Detection {
 
     private static EntityHitResult getEntityHitResult(World world, Vec3d start, Vec3d end, PlayerEntity player) {
         // Define the search area around the raycast
-        Box box = new Box(start, end).expand(0); // Adjust the expansion as needed
+        Box box = new Box(start, end).expand(0); // No expansion, making it very precise
 
         // Get all entities within the bounding box
         List<Entity> entities = world.getEntitiesByClass(Entity.class, box, e -> e != player);
 
-        // Find the closest entity to the start point
-        return entities.stream()
-                .map(EntityHitResult::new)
-                .min((result1, result2) -> Double.compare(start.squaredDistanceTo(result1.getEntity().getPos()), start.squaredDistanceTo(result2.getEntity().getPos())))
-                .orElse(null);
+        // Check for the closest entity by checking raycast intersection with their bounding boxes
+        for (Entity entity : entities) {
+            Box entityBox = entity.getBoundingBox().expand(0);  // No expansion, strictly the hitbox
+            if (entityBox.intersects(start, end)) {
+                return new EntityHitResult(entity);
+            }
+        }
+
+        return null;
     }
 
     private static BlockPos getBlockOccupiedByEntity(Entity entity) {

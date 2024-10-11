@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "modmod:item/small_peridot_bud"
+    "layer0": "modmod:block/small_peridot_bud"
   }
 }

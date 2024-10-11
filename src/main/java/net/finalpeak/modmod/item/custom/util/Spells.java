@@ -4,9 +4,6 @@ import net.finalpeak.modmod.damage.ModDamageTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.registry.Registries;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -32,13 +29,11 @@ public class Spells {
         BlockPos blockPos = Detection.raycastGetBlock(world, player, range);
         if (!world.isClient) {
             ServerWorld serverWorld = (ServerWorld) world;
-
-            // Particle type, position coordinates (x, y, z), and velocity components (x, y, z)
             serverWorld.spawnParticles(ParticleTypes.GLOW,
                     blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5,
                     300, // Number of particles
                     0, 10, 0, // x, y, z offsets
-                    0.1 // Particle speed
+                    0.025 // Particle speed
             );
         }
 
@@ -51,35 +46,26 @@ public class Spells {
                     assert blockPos != null;
                     lightning.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
                     world.spawnEntity(lightning);
+
+                    List<Entity> entities = Detection.getEntitiesNearbyBlock(world, blockPos, 10);
+                    for(Entity entity: entities){
+                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.GNOMIC), 5.0f);
+                    }
+
+                    if (!world.isClient) {
+                        ServerWorld serverWorld = (ServerWorld) world;
+                        serverWorld.spawnParticles(ParticleTypes.DUST_PLUME,
+                                blockPos.getX(), blockPos.getY()+1, blockPos.getZ(),
+                                150, // Number of particles
+                                1.5, 0, 1.5, // x, y, z offsets
+                                0.1 // Particle speed
+                        );
+                    }
                 }
             }
         }, 500);
         return true;
     }
-
-    // Launch any entities around the area the player is looking at
-    /*public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
-
-        Entity targetEntity = Detection.raycastGetEntity(world, player, 30);
-        if(targetEntity == null){
-            return false;
-        }
-
-        List<Entity> entities = Detection.getEntitiesNearbyEntity(targetEntity, 5);
-
-        Vec3d direction = player.getRotationVec(1.0F);
-        Vec3d horizontalVelocity = direction.multiply(horizontalSpeed);
-        Vec3d finalVelocity = new Vec3d(horizontalVelocity.x, verticalSpeed, horizontalVelocity.z);
-
-        for(Entity entity: entities){
-            if(entity != player) {
-                entity.setVelocity(finalVelocity);
-                entity.velocityModified = true;
-            }
-        }
-
-        return true;
-    }*/
 
     public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
 
