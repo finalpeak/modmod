@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "gnomesandtomes:block/mystic_mushroom_block"
+  }
+}

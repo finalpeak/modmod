@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "imbuing_table",
+		"particle": "imbuing_table"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 7]},
+			"faces": {
+				"north": {"uv": [4, 0, 8, 3], "imbuing_table": "#0"},
+				"east": {"uv": [4, 3, 8, 6], "imbuing_table": "#0"},
+				"south": {"uv": [4, 6, 8, 9], "imbuing_table": "#0"},
+				"west": {"uv": [0, 8, 4, 11], "imbuing_table": "#0"},
+				"up": {"uv": [4, 4, 0, 0], "imbuing_table": "#0"},
+				"down": {"uv": [4, 4, 0, 8], "imbuing_table": "#0"}
+			}
+		}
+	]
+}

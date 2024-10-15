@@ -1,0 +1,70 @@
+{
+  "itemgroup.gnomesandtomes.gnome_group": "Gnome",
+
+  "death.attack.gnomic": "%1$s died from Gnomic Sorcery",
+
+  "block.gnomesandtomes.imbuing_table": "Imbuing Table",
+
+  "item.gnomesandtomes.earthen_staff": "Earthen Staff",
+  "item.gnomesandtomes.earthen_staff.tooltip.shift": "Use left and right click to cast spells",
+  "item.gnomesandtomes.earthen_staff.tooltip.spell1": "[R - R - R] Earthquake",
+  "item.gnomesandtomes.earthen_staff.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.gnomesandtomes.earthen_staff.tooltip.spell3": "[L - L - L] <spell3>",
+  "item.gnomesandtomes.earthen_staff.tooltip.spell4": "[L - R - L] <spell4>",
+  "item.gnomesandtomes.earthen_staff.tooltip1": "How the peaceful gnomes manage to harness the earth.",
+  "item.gnomesandtomes.earthen_staff.tooltip2": "Press §eSHIFT§r for more Information",
+
+
+  "item.gnomesandtomes.gnomic_tome": "Gnomic Tome",
+  "item.gnomesandtomes.gnomic_tome.tooltip.shift": "Use left and right click to cast spells",
+  "item.gnomesandtomes.gnomic_tome.tooltip.spell1": "[R - R - R] Lightning",
+  "item.gnomesandtomes.gnomic_tome.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.gnomesandtomes.gnomic_tome.tooltip.spell3": "[L - L - L] <spell3>",
+  "item.gnomesandtomes.gnomic_tome.tooltip.spell4": "[L - R - L] <spell4>",
+  "item.gnomesandtomes.gnomic_tome.tooltip1": "The energy of nature courses through this relic.",
+  "item.gnomesandtomes.gnomic_tome.tooltip2": "Press §eSHIFT§r for more Information",
+
+  "item.gnomesandtomes.azure_shard": "Azure Shard",
+  "item.gnomesandtomes.azure_shard.tooltip.shift": "Use left and right click to cast spells",
+  "item.gnomesandtomes.azure_shard.tooltip.spell1": "[R - R - R] Lightning",
+  "item.gnomesandtomes.azure_shard.tooltip.spell2": "[R - L - R] <spell2>",
+  "item.gnomesandtomes.azure_shard.tooltip.spell3": "[L - L - L] <spell3>",
+  "item.gnomesandtomes.azure_shard.tooltip.spell4": "[L - R - L] <spell4>",
+  "item.gnomesandtomes.azure_shard.tooltip1": "A piece of the sky mysteriously returned to the earth.",
+  "item.gnomesandtomes.azure_shard.tooltip2": "Press §eSHIFT§r for more Information",
+
+  "item.gnomesandtomes.gnomite": "Gnomite",
+  "item.gnomesandtomes.refined_gnomite": "Refined Gnomite",
+
+  "block.gnomesandtomes.gnomite_block": "Gnomite Block",
+  "block.gnomesandtomes.gnomite_ore": "Gnomite Ore",
+
+  "block.gnomesandtomes.peridot_block": "Block of Peridot",
+  "block.gnomesandtomes.budding_peridot": "Budding Peridot",
+  "block.gnomesandtomes.small_peridot_bud": "Small Peridot Bud",
+  "block.gnomesandtomes.medium_peridot_bud": "Medium Peridot Bud",
+  "block.gnomesandtomes.large_peridot_bud": "Large Peridot Bud",
+  "block.gnomesandtomes.peridot_cluster": "Peridot Cluster",
+
+  "item.gnomesandtomes.peridot_shard":"Peridot Shard",
+
+  "item.gnomesandtomes.mystic_mushroom_item": "Mystic Mushroom",
+  "block.gnomesandtomes.mystic_mushroom_block": "Mystic Mushroom",
+
+  "block.gnomesandtomes.pando_log": "Pando Log",
+  "block.gnomesandtomes.pando_wood": "Pando Wood",
+  "block.gnomesandtomes.stripped_pando_log": "Stripped Pando Log",
+  "block.gnomesandtomes.stripped_pando_wood": "Stripped Pando Wood",
+  "block.gnomesandtomes.pando_planks": "Pando Planks",
+  "block.gnomesandtomes.pando_leaves": "Pando Leaves",
+
+  "block.gnomesandtomes.pando_stairs": "Pando Stairs",
+  "block.gnomesandtomes.pando_slab": "Pando Slab",
+  "block.gnomesandtomes.pando_button": "Pando Button",
+  "block.gnomesandtomes.pando_pressure_plate": "Pando Pressure Plate",
+  "block.gnomesandtomes.pando_fence": "Pando Fence",
+  "block.gnomesandtomes.pando_fence_gate": "Pando Fence Gate",
+  "block.gnomesandtomes.pando_door": "Pando Door",
+  "block.gnomesandtomes.pando_trapdoor": "Pando Trapdoor"
+
+}

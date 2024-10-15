@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_trapdoor_top",
+  "textures": {
+    "texture": "gnomesandtomes:block/pando_trapdoor"
+  }
+}

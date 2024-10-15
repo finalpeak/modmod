@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "gnomesandtomes:block/pando_planks",
+    "side": "gnomesandtomes:block/pando_planks",
+    "top": "gnomesandtomes:block/pando_planks"
+  }
+}

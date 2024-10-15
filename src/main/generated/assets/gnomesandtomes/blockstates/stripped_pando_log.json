@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "gnomesandtomes:block/stripped_pando_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "gnomesandtomes:block/stripped_pando_log"
+    },
+    "axis=z": {
+      "model": "gnomesandtomes:block/stripped_pando_log_horizontal",
+      "x": 90
+    }
+  }
+}

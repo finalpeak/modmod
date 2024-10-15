@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "modmod:pando_log",
-    "modmod:pando_log",
-    "modmod:stripped_pando_log",
-    "modmod:stripped_pando_wood"
+    "gnomesandtomes:pando_log",
+    "gnomesandtomes:pando_log",
+    "gnomesandtomes:stripped_pando_log",
+    "gnomesandtomes:stripped_pando_wood"
   ]
 }

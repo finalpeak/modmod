@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gnomesandtomes:block/stripped_pando_log",
+    "side": "gnomesandtomes:block/stripped_pando_log"
+  }
+}

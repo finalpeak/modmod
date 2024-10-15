@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "modmod",
+  "id": "gnomesandtomes",
   "version": "${version}",
 
-  "name": "ModMod",
+  "name": "Gnomes And Tomes",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Finalpeak"
@@ -14,22 +14,22 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modmod/icon.png",
+  "icon": "assets/gnomesandtomes/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.finalpeak.modmod.ModMod"
+      "net.finalpeak.gnomesandtomes.GnomesAndTomes"
     ],
     "client": [
-      "net.finalpeak.modmod.ModModClient"
+      "net.finalpeak.gnomesandtomes.GnomesAndTomesClient"
     ],
     "fabric-datagen": [
-      "net.finalpeak.modmod.ModModDataGenerator"
+      "net.finalpeak.gnomesandtomes.GnomesAndTomesDataGenerator"
     ]
   },
   "mixins": [
-    "modmod.mixins.json"
+    "gnomesandtomes.mixins.json"
   ],
 
   "depends": {

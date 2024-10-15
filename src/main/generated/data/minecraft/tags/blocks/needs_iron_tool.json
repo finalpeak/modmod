@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "modmod:gnomite_ore",
-    "modmod:gnomite_block"
+    "gnomesandtomes:gnomite_ore",
+    "gnomesandtomes:gnomite_block"
   ]
 }

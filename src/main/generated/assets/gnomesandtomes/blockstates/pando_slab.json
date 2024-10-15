@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gnomesandtomes:block/pando_slab"
+    },
+    "type=double": {
+      "model": "gnomesandtomes:block/pando_planks"
+    },
+    "type=top": {
+      "model": "gnomesandtomes:block/pando_slab_top"
+    }
+  }
+}

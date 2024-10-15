@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "gnomite",
+  "ingredient": {
+    "item": "gnomesandtomes:gnomite_ore"
+  },
+  "result": "gnomesandtomes:gnomite"
+}

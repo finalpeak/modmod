@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "gnomesandtomes:block/pando_sapling"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "gnomesandtomes:gnomite"
+    },
+    "result": "gnomesandtomes:refined_gnomite",
+    "count": 1
+  }

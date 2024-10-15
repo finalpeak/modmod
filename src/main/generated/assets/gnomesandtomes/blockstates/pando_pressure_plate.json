@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "gnomesandtomes:block/pando_pressure_plate"
+    },
+    "powered=true": {
+      "model": "gnomesandtomes:block/pando_pressure_plate_down"
+    }
+  }
+}
