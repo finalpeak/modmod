@@ -79,7 +79,7 @@ public class Detection {
 
         // Check for the closest entity by checking raycast intersection with their bounding boxes
         for (Entity entity : entities) {
-            Box entityBox = entity.getBoundingBox().expand(0);  // No expansion, strictly the hitbox
+            Box entityBox = entity.getBoundingBox().contract(1);
             if (entityBox.intersects(start, end)) {
                 return new EntityHitResult(entity);
             }
@@ -119,8 +119,4 @@ public class Detection {
         // Get all entities within the bounding box
         return world.getEntitiesByClass(Entity.class, box, entity -> true); // Returns all entities in the box
     }
-
-
-
-
 }
