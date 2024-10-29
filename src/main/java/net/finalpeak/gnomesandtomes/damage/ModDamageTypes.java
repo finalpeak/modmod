@@ -9,7 +9,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class ModDamageTypes {
-    public static final RegistryKey<DamageType> GNOMIC = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(GnomesAndTomes.MOD_ID, "gnomic"));
+    public static final RegistryKey<DamageType> EARTH = RegistryKey.of(RegistryKeys.DAMAGE_TYPE,
+            new Identifier(GnomesAndTomes.MOD_ID, "earth"));
+    public static final RegistryKey<DamageType> SKY = RegistryKey.of(RegistryKeys.DAMAGE_TYPE,
+            new Identifier(GnomesAndTomes.MOD_ID, "sky"));
+    public static final RegistryKey<DamageType> PLANT = RegistryKey.of(RegistryKeys.DAMAGE_TYPE,
+            new Identifier(GnomesAndTomes.MOD_ID, "plant"));
 
     public static DamageSource of(World world, RegistryKey<DamageType> key) {
         return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key));

@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 public class ModItemGroups {
     public static final ItemGroup GNOME_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(GnomesAndTomes.MOD_ID, "gnome_group"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.modmod.gnome_group"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.gnomesandtomes.gnome_group"))
                     .icon(() -> new ItemStack(ModItems.REFINED_GNOMITE)).entries((displayContext, entries) -> {
 
                         entries.add(ModBlocks.IMBUING_TABLE);
@@ -51,6 +51,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MEDIUM_PERIDOT_BUD);
                         entries.add(ModBlocks.LARGE_PERIDOT_BUD);
                         entries.add(ModBlocks.PERIDOT_CLUSTER);
+
+                        entries.add(ModBlocks.THORN);
 
                     }).build());
 

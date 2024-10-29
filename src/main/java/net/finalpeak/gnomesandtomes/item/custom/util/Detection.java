@@ -109,14 +109,16 @@ public class Detection {
         return entities;
     }
 
-    public static List<Entity> getEntitiesNearbyBlock(World world, BlockPos blockPos, int radius) {
-        // Create a bounding box around the block position with the given radius
+    public static Box getBox(World world, BlockPos blockPos, int radius){
         Box box = new Box(
                 blockPos.getX() - radius, blockPos.getY() - radius, blockPos.getZ() - radius,
                 blockPos.getX() + radius, blockPos.getY() + radius, blockPos.getZ() + radius
         );
+        return box;
+    }
 
-        // Get all entities within the bounding box
+    public static List<Entity> getEntitiesNearbyBlock(World world, BlockPos blockPos, int radius) {
+        Box box = getBox(world, blockPos, radius);
         return world.getEntitiesByClass(Entity.class, box, entity -> true); // Returns all entities in the box
     }
 }

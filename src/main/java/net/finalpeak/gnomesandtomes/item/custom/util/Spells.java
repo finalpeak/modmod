@@ -1,5 +1,7 @@
 package net.finalpeak.gnomesandtomes.item.custom.util;
 
+import net.finalpeak.gnomesandtomes.block.ModBlocks;
+import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -12,14 +14,95 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Vector3f;
+import net.minecraft.block.BlockState;
+import net.minecraft.state.property.Properties;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Spells {
 
-    //
+    public static boolean entangle(World world, PlayerEntity player) {
+        int range = 30;
+        int radius = 5;
+        Timer timer = new Timer();
+
+        BlockPos blockPos = Detection.raycastGetBlock(world, player, range);
+        if(blockPos == null){
+            return false;
+        }
+
+        //Store all valid locations
+        ArrayList<BlockPos> positions = new ArrayList<>();
+        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
+
+        int minX = blockPos.getX()-radius;
+        int maxX = blockPos.getX()+radius;
+        int minY = blockPos.getY()-radius;
+        int maxY = blockPos.getY()+radius;
+        int minZ = blockPos.getZ()-radius;
+        int maxZ = blockPos.getZ()+radius;
+
+        for (int x = minX; x < maxX; x++) {
+            for (int y = minY; y < maxY; y++) {
+                for (int z = minZ; z < maxZ; z++) {
+                    mutablePos.set(x, y, z);
+                    if (world.isAir(mutablePos) && !world.isAir(mutablePos.down())) {
+                        positions.add(mutablePos);
+                    }
+                }
+            }
+        }
+
+        //Dust Windup
+        for(int i = 0; i <= 250; i += 50){
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (!world.isClient) {
+                        ServerWorld serverWorld = (ServerWorld) world;
+                        DustParticleEffect dustEffect = new DustParticleEffect(new Vector3f(0.8F, 0.52F, 0.25F), 3.0F);
+
+                        for (BlockPos pos : positions){
+                            serverWorld.spawnParticles(
+                                    dustEffect,
+                                    pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5,
+                                    1,
+                                    2, 0, 2,
+                                    1
+                            );
+                        }
+                    }
+                }
+            }, i);
+        }
+
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for (BlockPos pos : positions){
+                    BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 0);
+                    world.setBlockState(mutablePos, thornBlockState, 3);
+                }
+            }
+        }, 250);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for (BlockPos pos : positions){
+                    BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 1);
+                    world.setBlockState(mutablePos, thornBlockState, 3);
+                }
+            }
+        }, 500);
+
+       return true;
+    }
+
     public static boolean test(World world, PlayerEntity player) {
         int range = 30;
         Timer timer = new Timer();
@@ -83,7 +166,7 @@ public class Spells {
 
                     List<Entity> entities = Detection.getEntitiesNearbyBlock(world, blockPos, 10);
                     for(Entity entity: entities){
-                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.GNOMIC), 5.0f);
+                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.SKY), 5.0f);
                     }
 
                     if (!world.isClient) {
@@ -118,7 +201,7 @@ public class Spells {
             entity.setVelocity(finalVelocity);
             entity.velocityModified = true;
             if (entity != player){
-                entity.damage(ModDamageTypes.of(world, ModDamageTypes.GNOMIC), 8.0f);
+                entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), 8.0f);
             }
         }
 

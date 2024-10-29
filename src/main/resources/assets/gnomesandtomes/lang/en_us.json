@@ -1,7 +1,9 @@
 {
   "itemgroup.gnomesandtomes.gnome_group": "Gnome",
 
-  "death.attack.gnomic": "%1$s died from Gnomic Sorcery",
+  "death.attack.earth": "%1$s died from earth magic",
+  "death.attack.sky": "%1$s died from ethereal spellcraft",
+  "death.attack.plant": "%1$s died from botanical sorcery",
 
   "block.gnomesandtomes.imbuing_table": "Imbuing Table",
 

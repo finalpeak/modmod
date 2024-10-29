@@ -6,6 +6,7 @@ import net.finalpeak.gnomesandtomes.GnomesAndTomes;
 import net.finalpeak.gnomesandtomes.block.custom.BuddingPeridotBlock;
 import net.finalpeak.gnomesandtomes.block.custom.ImbuingTableBlock;
 import net.finalpeak.gnomesandtomes.block.custom.PeridotClusterBlock;
+import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.world.ModConfiguredFeatures;
 import net.finalpeak.gnomesandtomes.world.tree.ModSaplingGenerators;
 import net.minecraft.block.*;
@@ -74,6 +75,9 @@ public class ModBlocks {
 
     public static final Block MYSTIC_MUSHROOM = registerBlock("mystic_mushroom_block",
             new MushroomPlantBlock(ModConfiguredFeatures.MYSTIC_MUSHROOM_KEY, FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM)));
+
+    public static final Block THORN = registerBlock("thorn",
+            new ThornBlock(FabricBlockSettings.copyOf(Blocks.COBWEB)));
 
 
     private static Block registerBlock(String name, Block block) {

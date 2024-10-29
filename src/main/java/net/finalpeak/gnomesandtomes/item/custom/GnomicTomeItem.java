@@ -21,14 +21,14 @@ public class GnomicTomeItem extends MagicTool {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.shift"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell1"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell2"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell3"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip.spell4"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip.shift"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip.spell1"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip.spell2"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip.spell3"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip.spell4"));
         } else {
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip1"));
-            tooltip.add(Text.translatable("item.modmod.gnomic_tome.tooltip2"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip1"));
+            tooltip.add(Text.translatable("item.gnomesandtomes.gnomic_tome.tooltip2"));
         }
     }
 
@@ -39,7 +39,7 @@ public class GnomicTomeItem extends MagicTool {
         int delay = 0;
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("R", "R", "R")))) {
-            if (Spells.lightning(world, player)) {
+            if (Spells.entangle(world, player)) {
                 removeMagic(1);
             }
             delay = 500;
