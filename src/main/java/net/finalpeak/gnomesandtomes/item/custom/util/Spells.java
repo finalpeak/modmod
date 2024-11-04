@@ -3,8 +3,8 @@ package net.finalpeak.gnomesandtomes.item.custom.util;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
-import net.finalpeak.gnomesandtomes.entity.ModEntities;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -13,12 +13,10 @@ import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Vector3f;
 import net.minecraft.block.BlockState;
-import net.minecraft.state.property.Properties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,28 +30,26 @@ public class Spells {
         int radius = 3;
         Timer timer = new Timer();
 
-        BlockPos blockPos = Detection.raycastGetBlock(world, player, range);
-        if(blockPos == null){
+        BlockPos targetBlock = Detection.raycastGetBlock(world, player, range);
+        if(targetBlock == null){
             return false;
         }
 
         //Store all valid locations
         ArrayList<BlockPos> positions = new ArrayList<>();
-        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
-        int minX = blockPos.getX()-radius;
-        int maxX = blockPos.getX()+radius;
-        int minY = blockPos.getY()-radius;
-        int maxY = blockPos.getY()+radius;
-        int minZ = blockPos.getZ()-radius;
-        int maxZ = blockPos.getZ()+radius;
+        int minX = targetBlock.getX()-radius;
+        int maxX = targetBlock.getX()+radius;
+        int minZ = targetBlock.getZ()-radius;
+        int maxZ = targetBlock.getZ()+radius;
+        int maxY = targetBlock.getY()+radius;
 
-        for (int x = minX; x < maxX; x++) {
-            for (int y = minY; y < maxY; y++) {
-                for (int z = minZ; z < maxZ; z++) {
-                    mutablePos.set(x, y, z);
-                    if (world.isAir(mutablePos) && world.isDirectionSolid(mutablePos.down(1), player, Direction.UP)) {
-                        positions.add(mutablePos);
+        for(int x = minX; x <= maxX; x++){
+            for(int z = minZ; z <= maxZ; z++){
+                for(int y = 0; y <= radius*2; y++){
+                    BlockPos block = new BlockPos(x, maxY, z);
+                    if(world.isAir(block.down(y)) && world.isTopSolid(block.down(y+1), player)){
+                        positions.add(block.down(y));
                     }
                 }
             }
