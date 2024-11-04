@@ -13,6 +13,7 @@ import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Vector3f;
@@ -28,7 +29,7 @@ public class Spells {
 
     public static boolean entangle(World world, PlayerEntity player) {
         int range = 30;
-        int radius = 5;
+        int radius = 3;
         Timer timer = new Timer();
 
         BlockPos blockPos = Detection.raycastGetBlock(world, player, range);
@@ -51,7 +52,7 @@ public class Spells {
             for (int y = minY; y < maxY; y++) {
                 for (int z = minZ; z < maxZ; z++) {
                     mutablePos.set(x, y, z);
-                    if (world.isAir(mutablePos) && !world.isAir(mutablePos.down())) {
+                    if (world.isAir(mutablePos) && world.isDirectionSolid(mutablePos.down(1), player, Direction.UP)) {
                         positions.add(mutablePos);
                     }
                 }
@@ -85,9 +86,9 @@ public class Spells {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 0);
                 for (BlockPos pos : positions){
-                    BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 0);
-                    world.setBlockState(mutablePos, thornBlockState, 3);
+                    world.setBlockState(pos, thornBlockState, 3);
                 }
             }
         }, 250);
@@ -95,9 +96,9 @@ public class Spells {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 1);
                 for (BlockPos pos : positions){
-                    BlockState thornBlockState = ModBlocks.THORN.getDefaultState().with(ThornBlock.AGE, 1);
-                    world.setBlockState(mutablePos, thornBlockState, 3);
+                    world.setBlockState(pos, thornBlockState, 3);
                 }
             }
         }, 500);
