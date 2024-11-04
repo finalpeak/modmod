@@ -3,6 +3,8 @@ package net.finalpeak.gnomesandtomes.item.custom.util;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
+import net.finalpeak.gnomesandtomes.entity.ModEntities;
+import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -185,13 +187,17 @@ public class Spells {
     }
 
     public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
+        int range = 30;
+        int radius = 3;
 
-        BlockPos targetBlock = Detection.raycastGetBlock(world, player, 30);
+        Timer timer = new Timer();
+
+        BlockPos targetBlock = Detection.raycastGetBlock(world, player, range);
         if(targetBlock == null){
             return false;
         }
 
-        List<Entity> entities = Detection.getEntitiesNearbyBlock(world, targetBlock, 5);
+        List<Entity> entities = Detection.getEntitiesNearbyBlock(world, targetBlock, radius);
 
         Vec3d direction = player.getRotationVec(1.0F);
         Vec3d horizontalVelocity = direction.multiply(horizontalSpeed);
@@ -204,6 +210,26 @@ public class Spells {
                 entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), 8.0f);
             }
         }
+
+        BlockPos targetPos = targetBlock.up();
+        while ((world.isAir(targetPos.down()) || !world.getBlockState(targetPos.down()).isSolidBlock(world, targetPos.down()))
+                && targetPos.getY() > world.getBottomY()) {
+            targetPos = targetPos.down();
+        }
+
+        // Now `targetPos` is at the closest ground level (or bottom of the world if none found)
+        BoulderEntity boulderEntity = new BoulderEntity(world);
+        boulderEntity.setPos(targetPos.getX() + 0.5, targetPos.getY() + 1, targetPos.getZ() + 0.5);
+        world.spawnEntity(boulderEntity);
+        boulderEntity.setVelocity(finalVelocity);
+        boulderEntity.earthquakeAnimationState.start(boulderEntity.age);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                boulderEntity.kill();
+            }
+        }, 5000);
 
         return true;
     }

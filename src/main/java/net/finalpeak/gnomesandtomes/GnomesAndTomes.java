@@ -1,11 +1,14 @@
 package net.finalpeak.gnomesandtomes;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.entity.ModBlockEntities;
+import net.finalpeak.gnomesandtomes.entity.ModEntities;
+import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
 import net.finalpeak.gnomesandtomes.item.ModItemGroups;
 import net.finalpeak.gnomesandtomes.item.ModItems;
 import net.finalpeak.gnomesandtomes.screen.ModScreenHandlers;

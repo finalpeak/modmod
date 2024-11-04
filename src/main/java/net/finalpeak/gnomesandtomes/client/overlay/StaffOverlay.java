@@ -5,9 +5,9 @@ import net.minecraft.util.Identifier;
 
 public class StaffOverlay extends Overlay {
 
-    private static final Identifier STAFF_BASE_OVERLAY = new Identifier("modmod", "textures/gui/staff_0.png");
-    private static final Identifier STAFF_RIGHT_CLICK = new Identifier("modmod", "textures/gui/staff_right.png");
-    private static final Identifier STAFF_LEFT_CLICK = new Identifier("modmod", "textures/gui/staff_left.png");
+    private static final Identifier STAFF_BASE_OVERLAY = new Identifier("gnomesandtomes", "textures/gui/staff_0.png");
+    private static final Identifier STAFF_RIGHT_CLICK = new Identifier("gnomesandtomes", "textures/gui/staff_right.png");
+    private static final Identifier STAFF_LEFT_CLICK = new Identifier("gnomesandtomes", "textures/gui/staff_left.png");
 
     // Constructor calls the superclass constructor with specific textures
     public StaffOverlay() {
