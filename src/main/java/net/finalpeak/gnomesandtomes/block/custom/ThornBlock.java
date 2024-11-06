@@ -6,15 +6,20 @@ import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class ThornBlock extends Block {
     public static final MapCodec<net.minecraft.block.SweetBerryBushBlock> CODEC = createCodec(net.minecraft.block.SweetBerryBushBlock::new);
@@ -60,6 +65,67 @@ public class ThornBlock extends Block {
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);
+    }
+
+    @Override
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if ((random.nextInt(3) == 0 || this.canMelt(world, pos, 4)) && world.getLightLevel(pos) > 11 - (Integer)state.get(AGE) - state.getOpacity(world, pos) && this.increaseAge(state, world, pos)) {
+            BlockPos.Mutable mutable = new BlockPos.Mutable();
+            Direction[] var6 = Direction.values();
+            int var7 = var6.length;
+
+            for(int var8 = 0; var8 < var7; ++var8) {
+                Direction direction = var6[var8];
+                mutable.set(pos, direction);
+                BlockState blockState = world.getBlockState(mutable);
+                if (blockState.isOf(this) && !this.increaseAge(blockState, world, mutable)) {
+                    world.scheduleBlockTick(mutable, this, MathHelper.nextInt(random, 20, 40));
+                }
+            }
+
+        } else {
+            world.scheduleBlockTick(pos, this, MathHelper.nextInt(random, 20, 40));
+        }
+    }
+
+    private boolean canMelt(BlockView world, BlockPos pos, int maxNeighbors) {
+        int i = 0;
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        Direction[] var6 = Direction.values();
+        int var7 = var6.length;
+
+        for(int var8 = 0; var8 < var7; ++var8) {
+            Direction direction = var6[var8];
+            mutable.set(pos, direction);
+            if (world.getBlockState(mutable).isOf(this)) {
+                ++i;
+                if (i >= maxNeighbors) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean increaseAge(BlockState state, World world, BlockPos pos) {
+        int i = (Integer)state.get(AGE);
+        if (i < 3) {
+            world.setBlockState(pos, (BlockState)state.with(AGE, i + 1), 2);
+            return false;
+        } else {
+            world.removeBlock(pos, false);
+            return true;
+        }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (!world.isClient()) {
+            // Schedule the first tick after the block is placed
+            world.scheduleBlockTick(pos, this, MathHelper.nextInt(world.getRandom(), 20, 40));
+        }
+        super.onPlaced(world, pos, state, placer, itemStack);
     }
 
     static {
