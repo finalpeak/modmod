@@ -47,8 +47,6 @@ public class GnomesAndTomesClient implements ClientModInitializer {
 
         EventHandlers.registerEvents();
 
-        EntityRendererRegistry.register(ModEntities.BOULDER, BoulderRenderer::new);
-        //EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BOULDER, BoulderModel::getTexturedModelData);
         ModEntityModels.registerModels();
 
         // Register overlays
