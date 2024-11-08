@@ -3,8 +3,9 @@ package net.finalpeak.gnomesandtomes.item.custom.util;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
+import net.finalpeak.gnomesandtomes.datagen.ModBlockTagProvider;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
-import net.minecraft.block.Block;
+import net.finalpeak.gnomesandtomes.item.custom.util.BlockUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -27,7 +28,8 @@ public class Spells {
 
     public static boolean entangle(World world, PlayerEntity player) {
         int range = 30;
-        int radius = 3;
+        int radius = 5;
+        int windup = 500;
         Timer timer = new Timer();
 
         BlockPos targetBlock = Detection.raycastGetBlock(world, player, range);
@@ -35,28 +37,39 @@ public class Spells {
             return false;
         }
 
+
         //Store all valid locations
         ArrayList<BlockPos> positions = new ArrayList<>();
+        List<BlockPos> blockCircle = BlockUtil.getCircle(world,
+                new BlockPos(targetBlock.getX(), targetBlock.getY(), targetBlock.getZ()), radius);
 
-        int minX = targetBlock.getX()-radius;
-        int maxX = targetBlock.getX()+radius;
-        int minZ = targetBlock.getZ()-radius;
-        int maxZ = targetBlock.getZ()+radius;
-        int maxY = targetBlock.getY()+radius;
-
-        for(int x = minX; x <= maxX; x++){
-            for(int z = minZ; z <= maxZ; z++){
-                for(int y = 0; y <= radius*2; y++){
-                    BlockPos block = new BlockPos(x, maxY, z);
-                    if(world.isAir(block.down(y)) && world.isTopSolid(block.down(y+1), player)){
-                        positions.add(block.down(y));
-                    }
+        for(BlockPos block: blockCircle){
+            for(int y = -radius; y <= radius; y++){
+                if(world.getBlockState(block.down(y)).isIn(ModBlockTagProvider.REPLACEABLE_BY_SPELL) && world.isTopSolid(block.down(y+1), player)){
+                    positions.add(block.down(y));
                 }
             }
         }
 
+//        int minX = targetBlock.getX()-radius;
+//        int maxX = targetBlock.getX()+radius;
+//        int minZ = targetBlock.getZ()-radius;
+//        int maxZ = targetBlock.getZ()+radius;
+//        int maxY = targetBlock.getY()+radius;
+//
+//        for(int x = minX; x <= maxX; x++){
+//            for(int z = minZ; z <= maxZ; z++){
+//                for(int y = 0; y <= radius*2; y++){
+//                    BlockPos block = new BlockPos(x, maxY, z);
+//                    if(world.getBlockState(block.down(y)).isIn(ModBlockTagProvider.REPLACEABLE_BY_SPELL) && world.isTopSolid(block.down(y+1), player)){
+//                        positions.add(block.down(y));
+//                    }
+//                }
+//            }
+//        }
+
         //Dust Windup
-        for(int i = 0; i <= 250; i += 50){
+        for(int i = 0; i < windup; i += 100){
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -78,7 +91,6 @@ public class Spells {
             }, i);
         }
 
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -87,7 +99,7 @@ public class Spells {
                     world.setBlockState(pos, thornBlockState, 3);
                 }
             }
-        }, 250);
+        }, windup);
 
         timer.schedule(new TimerTask() {
             @Override
@@ -97,7 +109,7 @@ public class Spells {
                     world.setBlockState(pos, thornBlockState, 3);
                 }
             }
-        }, 500);
+        }, windup+250);
 
        return true;
     }
@@ -186,13 +198,21 @@ public class Spells {
     public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
         int range = 30;
         int radius = 3;
+        int delay = 250;
+        int yForgiveness = 5;
 
         Timer timer = new Timer();
 
         BlockPos targetBlock = Detection.raycastGetBlock(world, player, range);
-        if(targetBlock == null){
-            return false;
+        if(targetBlock == null){return false;}
+
+        boolean nearTheGround = false;
+        for(int i = 0; i <= yForgiveness; i++){
+            if(world.isTopSolid(targetBlock.down(i), player)){
+                nearTheGround = true;
+            }
         }
+        if(!nearTheGround){return false;}
 
         List<Entity> entities = Detection.getEntitiesNearbyBlock(world, targetBlock, radius);
 
@@ -200,13 +220,18 @@ public class Spells {
         Vec3d horizontalVelocity = direction.multiply(horizontalSpeed);
         Vec3d finalVelocity = new Vec3d(horizontalVelocity.x, verticalSpeed, horizontalVelocity.z);
 
-        for(Entity entity: entities){
-            entity.setVelocity(finalVelocity);
-            entity.velocityModified = true;
-            if (entity != player){
-                entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), 8.0f);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for(Entity entity: entities){
+                    entity.setVelocity(finalVelocity);
+                    entity.velocityModified = true;
+                    if (entity != player){
+                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), 8.0f);
+                    }
+                }
             }
-        }
+        }, delay);
 
         BlockPos targetPos = targetBlock.up();
         while ((world.isAir(targetPos.down()) || !world.getBlockState(targetPos.down()).isSolidBlock(world, targetPos.down()))
