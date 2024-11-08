@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.entity.ModBlockEntities;
 import net.finalpeak.gnomesandtomes.entity.ModEntities;
+import net.finalpeak.gnomesandtomes.entity.client.ModModelLayers;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
 import net.finalpeak.gnomesandtomes.item.ModItemGroups;
 import net.finalpeak.gnomesandtomes.item.ModItems;

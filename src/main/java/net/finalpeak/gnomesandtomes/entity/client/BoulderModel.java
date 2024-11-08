@@ -4,7 +4,7 @@
 
 package net.finalpeak.gnomesandtomes.entity.client;
 
-import net.finalpeak.gnomesandtomes.entity.animation.BoulderAnimations;
+import net.finalpeak.gnomesandtomes.entity.animation.BoulderAnimation;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -17,7 +17,6 @@ public class BoulderModel<T extends BoulderEntity> extends SinglePartEntityModel
 	public BoulderModel(ModelPart root) {
 		this.boulder = root.getChild("boulder");
 	}
-
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -36,8 +35,11 @@ public class BoulderModel<T extends BoulderEntity> extends SinglePartEntityModel
 	@Override
 	public void setAngles(BoulderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-		this.updateAnimation(entity.earthquakeAnimationState, BoulderAnimations.EARTHQUAKE, ageInTicks, 1f);
+		boolean isRunning = entity.earthquakeAnimationState.isRunning();
+		System.out.println("Animation running: " + isRunning);
+		this.updateAnimation(entity.earthquakeAnimationState, BoulderAnimation.EARTHQUAKE, ageInTicks, 1f);
 	}
+
 
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
