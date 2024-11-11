@@ -10,7 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ImbuingScreen extends HandledScreen<ImbuingScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(GnomesAndTomes.MOD_ID, "textures/gui/imbuing_table_gui");
+    private static final Identifier TEXTURE = new Identifier(GnomesAndTomes.MOD_ID, "textures/gui/imbuing_table_gui.png");
 
     public ImbuingScreen(ImbuingScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -28,17 +28,25 @@ public class ImbuingScreen extends HandledScreen<ImbuingScreenHandler> {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
 
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        int backgroundWidth = 176;
+        int backgroundHeight = 210;
+
+        // Center the texture
+        int x = (this.width - backgroundWidth) / 2;
+        int y = (this.height - backgroundHeight) / 2;
+
+        // Draw the texture scaled properly
+        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight, 176, 210);
 
         renderProgress(context, x, y);
     }
 
+
+
     private void renderProgress(DrawContext context, int x, int y) {
         if(handler.isCrafting()){
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
+            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 6, handler.getScaledProgress());
         }
     }
 

@@ -71,7 +71,7 @@ public class MagicTool extends Item {
     }
 
     public void spells(World world, PlayerEntity player) {
-        // This will be overridden by subclasses like EarthenStaffItem
+        // This will be overridden by subclasses
     }
 
     public void removeMagic(int value) {

@@ -36,6 +36,12 @@ public class BoulderEntity extends Entity implements Ownable {
     }
 
     @Override
+    public boolean isPushable() { return false; }
+
+    @Override
+    public boolean isCollidable() { return true; }
+
+    @Override
     protected void initDataTracker() {}
 
     @Override

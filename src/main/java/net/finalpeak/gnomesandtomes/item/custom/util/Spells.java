@@ -32,6 +32,7 @@ public class Spells {
         int range = 30;
         int radius = 5;
         int windup = 600;
+        int duration = 15000;
         Timer timer = new Timer();
 
         BlockPos targetedBlock = Detection.raycastGetBlock(world, player, range);
@@ -97,6 +98,17 @@ public class Spells {
                 }
             }
         }, windup+250);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for (BlockPos pos : positions) {
+                    if (world.getBlockState(pos).getBlock().equals(ModBlocks.THORN)){
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+                    }
+                }
+            }
+        }, windup+duration);
 
        return true;
     }
@@ -182,7 +194,10 @@ public class Spells {
         return true;
     }
 
-    public static boolean launch(World world, PlayerEntity player, double horizontalSpeed, double verticalSpeed){
+    public static boolean launch(World world, PlayerEntity player){
+        float horizontalSpeed = 0.5f;
+        float verticalSpeed = 1.0f;
+        float damage = 8.0f;
         int range = 30;
         int radius = 3;
         int delay = 250;
@@ -214,21 +229,21 @@ public class Spells {
                     entity.setVelocity(finalVelocity);
                     entity.velocityModified = true;
                     if (entity != player){
-                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), 8.0f);
+                        entity.damage(ModDamageTypes.of(world, ModDamageTypes.EARTH), damage);
                     }
                 }
             }
         }, delay);
 
         BlockPos targetPos = targetBlock.up();
-        while ((world.isAir(targetPos.down()) || !world.getBlockState(targetPos.down()).isSolidBlock(world, targetPos.down()))
+        while (REPLACEABLE_BY_SPELL.contains(world.getBlockState(targetPos).getBlock())
                 && targetPos.getY() > world.getBottomY()) {
             targetPos = targetPos.down();
         }
 
         // Now `targetPos` is at the closest ground level (or bottom of the world if none found)
         BoulderEntity boulderEntity = new BoulderEntity(world);
-        boulderEntity.setPos(targetPos.getX() + 0.5, targetPos.getY() + 1, targetPos.getZ() + 0.5);
+        boulderEntity.setPos(targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5);
         world.spawnEntity(boulderEntity);
         boulderEntity.setVelocity(finalVelocity);
         boulderEntity.earthquakeAnimationState.start(boulderEntity.age);

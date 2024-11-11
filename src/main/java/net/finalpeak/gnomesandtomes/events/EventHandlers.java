@@ -6,9 +6,12 @@ import net.finalpeak.gnomesandtomes.client.overlay.StaffOverlay;
 import net.finalpeak.gnomesandtomes.item.custom.AzureShardItem;
 import net.finalpeak.gnomesandtomes.item.custom.EarthenStaffItem;
 import net.finalpeak.gnomesandtomes.item.custom.GnomicTomeItem;
+import net.finalpeak.gnomesandtomes.item.custom.MagicTool;
+import net.finalpeak.gnomesandtomes.item.custom.util.Detection;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,12 +30,11 @@ public class EventHandlers {
     public static void registerEvents() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null && client.world != null) {
-                handleLeftClick(client.player, client.world); // Handle left-click interactions
+                // Handle left-click interactions
+                handleLeftClick(client.player, client.world);
 
                 // Get the currently held item stack
                 ItemStack currentStack = client.player.getStackInHand(client.player.getActiveHand());
-
-                // Check if the held item has changed
                 if (!currentStack.equals(previousStack)) {
                     // If the previous item is a GnomicTomeItem, clear its inputs
                     if (previousStack.getItem() instanceof GnomicTomeItem tomeItem) {
@@ -47,32 +49,36 @@ public class EventHandlers {
                         shardItem.clearInputs(); // Clear inputs for the previous item
                         shardItem.resetSpelling();
                     }
-                    // Update the previousStack to the new item
-                    previousStack = currentStack;
-                }
-            }
-        });
+                    previousStack = currentStack; // Update the previousStack to the new item
 
-        // Register HUD render callback
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.player != null) {
-                ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
-                VertexConsumerProvider.Immediate vertexConsumers = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+                    //HUD Renderer
+                    ItemStack heldItem = client.player.getStackInHand(client.player.getActiveHand());
+                    VertexConsumerProvider.Immediate vertexConsumers = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
 
-                if (heldItem.getItem() instanceof GnomicTomeItem) {
-                    DrawContext context = new DrawContext(client, vertexConsumers);
-                    new TomeOverlay().render(context);
-                }
-                if (heldItem.getItem() instanceof EarthenStaffItem) {
-                    DrawContext context = new DrawContext(client, vertexConsumers);
-                    new StaffOverlay().render(context);
-                }
-                if (heldItem.getItem() instanceof AzureShardItem) {
-                    DrawContext context = new DrawContext(client, vertexConsumers);
-                    new ShardOverlay().render(context);
-                }
+                    if (heldItem.getItem() instanceof GnomicTomeItem) {
+                        DrawContext context = new DrawContext(client, vertexConsumers);
+                        new TomeOverlay().render(context);
+                    }
+                    else if (heldItem.getItem() instanceof EarthenStaffItem) {
+                        DrawContext context = new DrawContext(client, vertexConsumers);
+                        new StaffOverlay().render(context);
+                    }
+                    else if (heldItem.getItem() instanceof AzureShardItem) {
+                        DrawContext context = new DrawContext(client, vertexConsumers);
+                        new ShardOverlay().render(context);
+                    }
+                    vertexConsumers.draw(); // Ensure all vertices are drawn
 
-                vertexConsumers.draw(); // Ensure all vertices are drawn
+                    // Target entity glowing
+                    if (heldItem.getItem() instanceof MagicTool) {
+                        int range = 30;
+                        Entity target = Detection.raycastGetEntity(client.world, client.player, range);
+                        if (target != null){
+                            target.setGlowing(true);
+                        }
+                    }
+
+                }
             }
         });
     }
@@ -109,7 +115,7 @@ public class EventHandlers {
                         public void run() {
                             halter = false;
                         }
-                    }, 50);
+                    }, 500);
                 }
 
                 // Mark that the left click was pressed this tick

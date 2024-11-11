@@ -87,7 +87,7 @@ public class ImbuingTableBlockEntity extends BlockEntity implements ExtendedScre
 
     @Override
     public Text getDisplayName() {
-        return Text.translatable("block.modmod.imbuing_table");
+        return Text.translatable("block.gnomesandtomes.imbuing_table");
     }
 
     @Nullable

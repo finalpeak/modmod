@@ -46,7 +46,7 @@ public class GnomicTomeItem extends MagicTool {
         }
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("R", "L", "R")))) {
-            if (Spells.launch(world, player, 0.5, 1)) {
+            if (Spells.launch(world, player)) {
                 removeMagic(1);
             }
         }
