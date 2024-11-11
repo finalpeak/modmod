@@ -1,7 +1,6 @@
 package net.finalpeak.gnomesandtomes.entity.custom;
 
 import net.finalpeak.gnomesandtomes.entity.ModEntities;
-import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Ownable;
@@ -9,30 +8,14 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BoulderEntity extends Entity implements Ownable {
-    public final AnimationState earthquakeAnimationState = new AnimationState();
+public class PillarEntity extends Entity implements Ownable {
 
-    public BoulderEntity(World world) {
-        super(ModEntities.BOULDER, world);
+    public PillarEntity(World world) {
+        super(ModEntities.PILLAR, world);
     }
 
-    public BoulderEntity(EntityType<? extends BoulderEntity> type, World world) {
+    public PillarEntity(EntityType<? extends PillarEntity> type, World world) {
         super(type, world);
-    }
-
-    private void setupAnimationStates() {
-        if (!earthquakeAnimationState.isRunning()) {
-            System.out.println("Animation starting at age: " + this.age);
-            this.earthquakeAnimationState.start(this.age);
-        }
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.getWorld().isClient) {
-            setupAnimationStates();
-        }
     }
 
     @Override

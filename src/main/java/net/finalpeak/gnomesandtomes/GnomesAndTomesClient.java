@@ -4,17 +4,12 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.client.overlay.ShardOverlay;
 import net.finalpeak.gnomesandtomes.client.overlay.StaffOverlay;
 import net.finalpeak.gnomesandtomes.client.overlay.TomeOverlay;
-import net.finalpeak.gnomesandtomes.entity.ModEntities;
 import net.finalpeak.gnomesandtomes.entity.ModEntityModels;
-import net.finalpeak.gnomesandtomes.entity.client.BoulderModel;
-import net.finalpeak.gnomesandtomes.entity.client.BoulderRenderer;
-import net.finalpeak.gnomesandtomes.entity.client.ModModelLayers;
 import net.finalpeak.gnomesandtomes.events.EventHandlers;
 import net.finalpeak.gnomesandtomes.item.custom.AzureShardItem;
 import net.finalpeak.gnomesandtomes.item.custom.EarthenStaffItem;
@@ -24,8 +19,6 @@ import net.finalpeak.gnomesandtomes.screen.ModScreenHandlers;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
-import net.finalpeak.gnomesandtomes.block.ModBlocks;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.ItemStack;
 
 @Environment(EnvType.CLIENT)

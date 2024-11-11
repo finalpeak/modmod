@@ -46,7 +46,7 @@ public class EarthenStaffItem extends MagicTool {
         }
 
         if (inputs.equals(new ArrayList<>(Arrays.asList("R", "L", "R")))) {
-            if (Spells.test(world, player)) {
+            if (Spells.pillar(world, player)) {
                 removeMagic(1);
             }
             delay = 500;

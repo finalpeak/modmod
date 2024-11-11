@@ -7,4 +7,6 @@ import net.minecraft.util.Identifier;
 public class ModModelLayers {
     public static final EntityModelLayer BOULDER =
             new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "boulder"), "main");
+    public static final EntityModelLayer PILLAR =
+            new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "pillar"), "main");
 }

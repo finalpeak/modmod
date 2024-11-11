@@ -4,6 +4,7 @@ import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
+import net.finalpeak.gnomesandtomes.entity.custom.PillarEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -243,15 +244,40 @@ public class Spells {
 
         // Now `targetPos` is at the closest ground level (or bottom of the world if none found)
         BoulderEntity boulderEntity = new BoulderEntity(world);
-        boulderEntity.setPos(targetPos.getX() + 0.5, targetPos.getY(), targetPos.getZ() + 0.5);
+        boulderEntity.setPos(targetPos.getX() + 0.5, targetPos.getY()+1, targetPos.getZ() + 0.5);
         world.spawnEntity(boulderEntity);
-        boulderEntity.setVelocity(finalVelocity);
         boulderEntity.earthquakeAnimationState.start(boulderEntity.age);
 
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 boulderEntity.kill();
+            }
+        }, 5000);
+
+        return true;
+    }
+
+    public static boolean pillar(World world, PlayerEntity player){
+        int delay = 0;
+        int yForgiveness = 5;
+
+        Timer timer = new Timer();
+
+        BlockPos targetPos = player.getBlockPos();
+        while (REPLACEABLE_BY_SPELL.contains(world.getBlockState(targetPos).getBlock())
+                && targetPos.getY() > world.getBottomY()) {
+            targetPos = targetPos.down();
+        }
+
+        PillarEntity pillarEntity = new PillarEntity(world);
+        pillarEntity.setPos(targetPos.getX() + 0.5, targetPos.getY()+1, targetPos.getZ() + 0.5);
+        world.spawnEntity(pillarEntity);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                pillarEntity.kill();
             }
         }, 5000);
 
