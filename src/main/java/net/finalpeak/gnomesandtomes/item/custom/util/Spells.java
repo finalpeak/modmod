@@ -3,9 +3,10 @@ package net.finalpeak.gnomesandtomes.item.custom.util;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.damage.ModDamageTypes;
-import net.finalpeak.gnomesandtomes.datagen.ModBlockTagProvider;
 import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
-import net.finalpeak.gnomesandtomes.item.custom.util.BlockUtil;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -17,59 +18,44 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Vector3f;
-import net.minecraft.block.BlockState;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Spells {
+    public static final Set<Block> REPLACEABLE_BY_SPELL = Set.of(
+            Blocks.AIR,
+            Blocks.TALL_GRASS,
+            Blocks.SHORT_GRASS
+    );
 
     public static boolean entangle(World world, PlayerEntity player) {
         int range = 30;
         int radius = 5;
-        int windup = 500;
+        int windup = 600;
         Timer timer = new Timer();
 
-        BlockPos targetBlock = Detection.raycastGetBlock(world, player, range);
-        if(targetBlock == null){
+        BlockPos targetedBlock = Detection.raycastGetBlock(world, player, range);
+        if(targetedBlock == null){
             return false;
         }
-
 
         //Store all valid locations
         ArrayList<BlockPos> positions = new ArrayList<>();
         List<BlockPos> blockCircle = BlockUtil.getCircle(world,
-                new BlockPos(targetBlock.getX(), targetBlock.getY(), targetBlock.getZ()), radius);
+                new BlockPos(targetedBlock.getX(), targetedBlock.getY(), targetedBlock.getZ()), radius, true);
 
         for(BlockPos block: blockCircle){
             for(int y = -radius; y <= radius; y++){
-                if(world.getBlockState(block.down(y)).isIn(ModBlockTagProvider.REPLACEABLE_BY_SPELL) && world.isTopSolid(block.down(y+1), player)){
-                    positions.add(block.down(y));
+                BlockPos targetPos = block.down(y);
+                if (REPLACEABLE_BY_SPELL.contains(world.getBlockState(targetPos).getBlock()) &&
+                        world.isTopSolid(block.down(y + 1), player)) {
+                    positions.add(targetPos);
                 }
             }
         }
 
-//        int minX = targetBlock.getX()-radius;
-//        int maxX = targetBlock.getX()+radius;
-//        int minZ = targetBlock.getZ()-radius;
-//        int maxZ = targetBlock.getZ()+radius;
-//        int maxY = targetBlock.getY()+radius;
-//
-//        for(int x = minX; x <= maxX; x++){
-//            for(int z = minZ; z <= maxZ; z++){
-//                for(int y = 0; y <= radius*2; y++){
-//                    BlockPos block = new BlockPos(x, maxY, z);
-//                    if(world.getBlockState(block.down(y)).isIn(ModBlockTagProvider.REPLACEABLE_BY_SPELL) && world.isTopSolid(block.down(y+1), player)){
-//                        positions.add(block.down(y));
-//                    }
-//                }
-//            }
-//        }
-
         //Dust Windup
-        for(int i = 0; i < windup; i += 100){
+        for(int i = 0; i < windup; i += 200){
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -82,7 +68,7 @@ public class Spells {
                                     dustEffect,
                                     pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5,
                                     1,
-                                    2, 0, 2,
+                                    0.25, 0, 0.25,
                                     1
                             );
                         }
@@ -91,6 +77,7 @@ public class Spells {
             }, i);
         }
 
+        // Thorn placement
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

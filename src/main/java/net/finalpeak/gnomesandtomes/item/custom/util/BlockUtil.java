@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BlockUtil {
-    public static List<BlockPos> getCircle(World world, BlockPos center, int radius) {
+    public static List<BlockPos> getCircle(World world, BlockPos center, int radius, boolean filledIn) {
         List<BlockPos> blockPositions = new ArrayList<>();
 
         // Get the center coordinates
@@ -24,14 +24,21 @@ public class BlockUtil {
             double radians = Math.toRadians(angle);
 
             // Calculate the x and z offsets from the center using trigonometry
-            int offsetX = (int) (Math.cos(radians) * radius);
-            int offsetZ = (int) (Math.sin(radians) * radius);
+            if(filledIn){
+                for(int r = 0; r <= radius; r++){
+                    int offsetX = (int) (Math.cos(radians) * r);
+                    int offsetZ = (int) (Math.sin(radians) * r);
 
-            // Get the BlockPos for the calculated coordinates
-            BlockPos blockPos = new BlockPos((int)(centerX + offsetX), centerY, (int)(centerZ + offsetZ));
+                    BlockPos blockPos = new BlockPos((int)(centerX + offsetX), centerY, (int)(centerZ + offsetZ));
+                    blockPositions.add(blockPos);
+                }
+            }else{
+                int offsetX = (int) (Math.cos(radians) * radius);
+                int offsetZ = (int) (Math.sin(radians) * radius);
 
-            // Add the block position to the list
-            blockPositions.add(blockPos);
+                BlockPos blockPos = new BlockPos((int)(centerX + offsetX), centerY, (int)(centerZ + offsetZ));
+                blockPositions.add(blockPos);
+            }
         }
 
         blockPositions = removeDuplicateBlockPositions(blockPositions);

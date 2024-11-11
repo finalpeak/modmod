@@ -36,7 +36,7 @@ public class BoulderModel<T extends BoulderEntity> extends SinglePartEntityModel
 	public void setAngles(BoulderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 		boolean isRunning = entity.earthquakeAnimationState.isRunning();
-		System.out.println("Animation running: " + isRunning);
+		//System.out.println("Animation running: " + isRunning);
 		this.updateAnimation(entity.earthquakeAnimationState, BoulderAnimation.EARTHQUAKE, ageInTicks, 1f);
 	}
 
