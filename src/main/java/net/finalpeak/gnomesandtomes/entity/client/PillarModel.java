@@ -57,7 +57,5 @@ public class PillarModel<T extends PillarEntity> extends SinglePartEntityModel<T
 	}
 
 	@Override
-	public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		this.getPart().traverse().forEach(ModelPart::resetTransform);
-	}
+	public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {	}
 }

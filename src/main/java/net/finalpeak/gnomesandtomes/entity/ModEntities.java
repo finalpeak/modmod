@@ -22,5 +22,5 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             new Identifier(GnomesAndTomes.MOD_ID, "pillar"), // Use the correct identifier
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, (EntityType.EntityFactory<PillarEntity>) PillarEntity::new) // Ensure correct factory
-                    .dimensions(EntityDimensions.fixed(2f, 5f)).build());
+                    .dimensions(EntityDimensions.fixed(1.5f, 4.9f)).build());
 }

@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 
 public class BoulderRenderer extends EntityRenderer<BoulderEntity> {
-    private static final Identifier TEXTURE = new Identifier(GnomesAndTomes.MOD_ID, "textures/entity/boulder.png");
+    private static final Identifier TEXTURE = new Identifier(GnomesAndTomes.MOD_ID, "textures/entity/stonecutout.png");
     private final BoulderModel<BoulderEntity> model;  // Correctly declare the model type
 
     public BoulderRenderer(EntityRendererFactory.Context context) {

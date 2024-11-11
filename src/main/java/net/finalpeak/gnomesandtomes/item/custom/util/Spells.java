@@ -259,27 +259,47 @@ public class Spells {
     }
 
     public static boolean pillar(World world, PlayerEntity player){
-        int delay = 0;
+        int delay = 500;
         int yForgiveness = 5;
+        int duration = 30000;
 
         Timer timer = new Timer();
 
         BlockPos targetPos = player.getBlockPos();
+
+        boolean nearTheGround = false;
+        for(int i = 0; i <= yForgiveness; i++){
+            if(world.isTopSolid(targetPos.down(i), player)){
+                nearTheGround = true;
+            }
+        }
+        if(!nearTheGround){return false;}
+
         while (REPLACEABLE_BY_SPELL.contains(world.getBlockState(targetPos).getBlock())
                 && targetPos.getY() > world.getBottomY()) {
             targetPos = targetPos.down();
         }
 
+        Vec3d currentVelocity = player.getVelocity();
+        player.setVelocity(currentVelocity.x, currentVelocity.y + 1.0f, currentVelocity.z);
+        player.velocityDirty = true;
+
         PillarEntity pillarEntity = new PillarEntity(world);
         pillarEntity.setPos(targetPos.getX() + 0.5, targetPos.getY()+1, targetPos.getZ() + 0.5);
-        world.spawnEntity(pillarEntity);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                world.spawnEntity(pillarEntity);
+            }
+        }, delay);
 
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 pillarEntity.kill();
             }
-        }, 5000);
+        }, duration);
 
         return true;
     }
