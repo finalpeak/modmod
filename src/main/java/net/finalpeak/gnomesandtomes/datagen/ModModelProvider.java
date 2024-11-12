@@ -3,16 +3,10 @@ package net.finalpeak.gnomesandtomes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
-import net.finalpeak.gnomesandtomes.block.custom.ThornBlock;
 import net.finalpeak.gnomesandtomes.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
-import net.finalpeak.gnomesandtomes.block.ModBlocks;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ModelProvider;
-import net.minecraft.data.client.TextureMap;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -56,7 +50,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerTintableCross(ModBlocks.THORN, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        blockStateModelGenerator.registerCrop(ModBlocks.THORN, ThornBlock.AGE, 0, 1);
+        //blockStateModelGenerator.registerCrop(ModBlocks.THORN, ThornBlock.AGE, 0, 1);
     }
 
     @Override

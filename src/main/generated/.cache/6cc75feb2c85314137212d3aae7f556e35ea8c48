@@ -1,7 +1,8 @@
-// 1.20.4	2024-10-22T18:18:01.2642281	Gnomes And Tomes/Tags for minecraft:block
+// 1.20.4	2024-11-12T18:12:38.5032539	Gnomes And Tomes/Tags for minecraft:block
 cdfb9f6269b23484ef168268a861afae9b2b3745 data\minecraft\tags\blocks\mineable\pickaxe.json
 274856a3195af8e9418dc8e260d7d4dc39cdd8b7 data\minecraft\tags\blocks\saplings.json
 d92fdf48e8d35cb9e4e1c90e593ccea832b9cacd data\minecraft\tags\blocks\fences.json
-dd952b4c9885a2c7a04d110b9cfa0085d37cb5b7 data\minecraft\tags\blocks\fence_gates.json
 70fcb86ff9cdb08c012c3d92e56a537a999eb4b7 data\minecraft\tags\blocks\needs_iron_tool.json
+dd952b4c9885a2c7a04d110b9cfa0085d37cb5b7 data\minecraft\tags\blocks\fence_gates.json
+1252d0d17c2feeeb523c891478f6c58759271cc0 data\gnomesandtomes\tags\blocks\replaceable_by_spell.json
 0f5d4b9f19ea27e0f8df8cea59e1976265411e47 data\minecraft\tags\blocks\logs_that_burn.json

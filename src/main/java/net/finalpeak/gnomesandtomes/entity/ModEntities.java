@@ -23,4 +23,8 @@ public class ModEntities {
             new Identifier(GnomesAndTomes.MOD_ID, "pillar"), // Use the correct identifier
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, (EntityType.EntityFactory<PillarEntity>) PillarEntity::new) // Ensure correct factory
                     .dimensions(EntityDimensions.fixed(1.5f, 4.9f)).build());
+
+    public static void registerModEntities() {
+        GnomesAndTomes.LOGGER.info("Registering Entities for " + GnomesAndTomes.MOD_ID);
+    }
 }

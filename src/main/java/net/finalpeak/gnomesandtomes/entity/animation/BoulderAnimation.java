@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.animation.Transformation;
  * @author Author
  */
 public class BoulderAnimation {
-	public static final Animation EARTHQUAKE = Animation.Builder.create(5.0F)
+	public static final Animation EARTHQUAKE = Animation.Builder.create(5.0F).looping()
 			.addBoneAnimation("boulder", new Transformation(Transformation.Targets.ROTATE,
 					new Keyframe(0.0F, AnimationHelper.createRotationalVector(-15.0F, 0.0F, 0.0F), Transformation.Interpolations.LINEAR),
 					new Keyframe(2.0F, AnimationHelper.createRotationalVector(-15.0F, 0.0F, 0.0F), Transformation.Interpolations.LINEAR),

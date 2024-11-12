@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class BoulderEntity extends Entity implements Ownable {
     public final AnimationState earthquakeAnimationState = new AnimationState();
+    private int AnimationTimeout = 0;
 
     public BoulderEntity(World world) {
         super(ModEntities.BOULDER, world);
@@ -20,19 +21,33 @@ public class BoulderEntity extends Entity implements Ownable {
         super(type, world);
     }
 
+//    private void setupAnimationStates() {
+//        if (!earthquakeAnimationState.isRunning()) {
+//            System.out.println("Animation starting at age: " + this.age);
+//            this.earthquakeAnimationState.start(this.age);
+//        }
+//    }
+
     private void setupAnimationStates() {
-        if (!earthquakeAnimationState.isRunning()) {
-            System.out.println("Animation starting at age: " + this.age);
+        if (this.AnimationTimeout <= 0) {
+            this.AnimationTimeout = this.random.nextInt(40) + 80;
             this.earthquakeAnimationState.start(this.age);
+        } else {
+            --this.AnimationTimeout;
         }
     }
 
     @Override
     public void tick() {
         super.tick();
-        if (this.getWorld().isClient) {
+        if(this.getWorld().isClient()) {
             setupAnimationStates();
         }
+    }
+
+    private boolean shouldTriggerAnimation() {
+        // Add custom conditions here to control when animation starts.
+        return this.age % 100 == 0 && !earthquakeAnimationState.isRunning();
     }
 
     @Override

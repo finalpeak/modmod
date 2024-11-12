@@ -39,6 +39,8 @@ public class GnomesAndTomes implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 
+		ModEntities.registerModEntities();
+
 		// Register strippable blocks
 		StrippableBlockRegistry.register(ModBlocks.PANDO_LOG, ModBlocks.STRIPPED_PANDO_LOG);
 		StrippableBlockRegistry.register(ModBlocks.PANDO_WOOD, ModBlocks.STRIPPED_PANDO_WOOD);
