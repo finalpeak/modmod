@@ -7,7 +7,6 @@ import net.minecraft.client.render.entity.animation.Transformation;
 
 /**
  * Made with Blockbench 4.11.2
- * Exported for Minecraft version 1.19 or later with Mojang mappings
  * @author Author
  */
 public class BoulderAnimation {

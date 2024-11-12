@@ -32,17 +32,9 @@ public class BoulderModel<T extends BoulderEntity> extends SinglePartEntityModel
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 
-//	@Override
-//	public void setAngles(BoulderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-//		this.getPart().traverse().forEach(ModelPart::resetTransform);
-//		this.updateAnimation(entity.earthquakeAnimationState, BoulderAnimation.EARTHQUAKE, ageInTicks, 1f);
-//	}
-
 	@Override
 	public void setAngles(BoulderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-
-		this.animateMovement(BoulderAnimation.EARTHQUAKE, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.updateAnimation(entity.earthquakeAnimationState, BoulderAnimation.EARTHQUAKE, ageInTicks, 1f);
 	}
 
