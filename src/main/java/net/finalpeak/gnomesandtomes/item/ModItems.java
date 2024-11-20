@@ -5,6 +5,7 @@ import net.finalpeak.gnomesandtomes.GnomesAndTomes;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.item.custom.AzureShardItem;
 import net.finalpeak.gnomesandtomes.item.custom.EarthenStaffItem;
+import net.finalpeak.gnomesandtomes.item.custom.GnomeSummonItem;
 import net.finalpeak.gnomesandtomes.item.custom.GnomicTomeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -32,7 +33,8 @@ public class ModItems {
     public static final Item MYSTIC_MUSHROOM_ITEM = registerItem("mystic_mushroom_item",
             new BlockItem(ModBlocks.MYSTIC_MUSHROOM, new FabricItemSettings().food(ModFoodComponents.MYSTIC_MUSHROOM)));
 
-
+    public static final Item GNOME_SUMMON_ITEM = registerItem("gnome_summon_item",
+            new GnomeSummonItem(new FabricItemSettings().maxCount(1)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(GnomesAndTomes.MOD_ID, name), item);

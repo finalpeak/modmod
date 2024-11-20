@@ -29,6 +29,8 @@ public class ModItemGroups {
 
                         entries.add(ModItems.MYSTIC_MUSHROOM_ITEM);
 
+                        entries.add(ModItems.GNOME_SUMMON_ITEM);
+
                         entries.add(ModBlocks.PANDO_LOG);
                         entries.add(ModBlocks.PANDO_WOOD);
                         entries.add(ModBlocks.STRIPPED_PANDO_LOG);
@@ -51,8 +53,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MEDIUM_PERIDOT_BUD);
                         entries.add(ModBlocks.LARGE_PERIDOT_BUD);
                         entries.add(ModBlocks.PERIDOT_CLUSTER);
-
-                        entries.add(ModBlocks.THORN);
 
                     }).build());
 
