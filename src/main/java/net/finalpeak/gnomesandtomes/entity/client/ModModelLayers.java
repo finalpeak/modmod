@@ -9,4 +9,8 @@ public class ModModelLayers {
             new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "boulder"), "main");
     public static final EntityModelLayer PILLAR =
             new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "pillar"), "main");
+    public static final EntityModelLayer GNOME =
+            new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "gnome"), "main");
+    public static final EntityModelLayer PORCUPINE =
+            new EntityModelLayer(new Identifier(GnomesAndTomes.MOD_ID, "porcupine"), "main");
 }

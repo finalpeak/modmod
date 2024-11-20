@@ -8,13 +8,13 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.finalpeak.gnomesandtomes.block.ModBlocks;
 import net.finalpeak.gnomesandtomes.block.entity.ModBlockEntities;
 import net.finalpeak.gnomesandtomes.entity.ModEntities;
-import net.finalpeak.gnomesandtomes.entity.client.ModModelLayers;
-import net.finalpeak.gnomesandtomes.entity.custom.BoulderEntity;
+import net.finalpeak.gnomesandtomes.entity.custom.PorcupineEntity;
 import net.finalpeak.gnomesandtomes.item.ModItemGroups;
 import net.finalpeak.gnomesandtomes.item.ModItems;
 import net.finalpeak.gnomesandtomes.screen.ModScreenHandlers;
 import net.finalpeak.gnomesandtomes.util.ModLootTableModifiers;
 import net.finalpeak.gnomesandtomes.world.gen.ModWorldGeneration;
+import net.finalpeak.gnomesandtomes.entity.custom.GnomeEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +40,10 @@ public class GnomesAndTomes implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 
 		ModEntities.registerModEntities();
+
+		FabricDefaultAttributeRegistry.register(ModEntities.GNOME, GnomeEntity.createGnomeAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.PORCUPINE, PorcupineEntity.createPorcupineAttributes());
+
 
 		// Register strippable blocks
 		StrippableBlockRegistry.register(ModBlocks.PANDO_LOG, ModBlocks.STRIPPED_PANDO_LOG);

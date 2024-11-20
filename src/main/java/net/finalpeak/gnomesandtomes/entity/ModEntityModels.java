@@ -11,6 +11,12 @@ public class ModEntityModels {
 
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PILLAR, PillarModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.PILLAR, PillarRenderer::new);
+
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GNOME, GnomeModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.GNOME, GnomeRenderer::new);
+
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PORCUPINE, PorcupineModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.PORCUPINE, PorcupineRenderer::new);
     }
 }
 
